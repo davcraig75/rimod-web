@@ -1,0 +1,93 @@
+var app_name="<%= app_name %>";
+var global_api=document.querySelector('script[id="<%= app_name %>_js"][api]').getAttribute('api');
+console.log(app_name);
+console.log(global_api);
+
+if (typeof global_api === "undefined" ) {
+   global_api = 'https://itg.usc.edu/rimod';
+}
+console.log(global_api);
+
+var browser={};
+var result;
+
+<%-  include ../src/jquery-3.3.1.min.js  %>
+<%-  include ../src/vega.min.js %>
+<%-  include ../src/vega-embed.min.js %>
+<%-  include ../src/lz-string.js %>
+<%-  include ../src/autocomplete.js %>
+<%-  include ../src/jquery-ui.min.js  %>
+<%-  include ../src/jquery.ui.touch-punch.min.js  %>
+
+var server = jQuery( "#<%-app_name%>" );
+server.append(jQuery.parseHTML( "<style type='text/css'>"+itg_decomp("<%-autocomplete%>")+"</style>"));
+server.append(jQuery.parseHTML( "<style type='text/css'>"+itg_decomp("<%-css%>")+"</style> "));
+
+server.append(jQuery.parseHTML(itg_decomp("<%-menu%>")));
+
+var samples=JSON.parse(itg_decomp('<%-samples%>'));
+server.append("<style type='text/css'>.loader {border: 1em solid #f3f3f3;border-top: 1em solid #3498db;border-radius: 50%;width: 50px;margin: 0 auto !important;height: 50px;vertical-align: middle;display: block;animation: spin 1s linear infinite;};@-webkit-keyframes spin {0% {-webkit-transform: rotate(0deg);}100% {-webkit-transform: rotate(360deg);}}@keyframes spin {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}</style>");
+server.append(jQuery.parseHTML("<div class='loader_box' style='width: 100%;background-color: white;display: table-cell;display:block;position:absolute;z-index: 999;'><div class='loader' id='loader_itg'></div></div>"));
+server.append(jQuery.parseHTML("<div id='dna'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>");
+var loads=0;
+function loader(status,location) {	
+	var a=document.getElementsByClassName("itg-page");
+	if(status) {
+		loads=loads+1;
+		for (var i=0;i<a.length;i++) {
+			a[i].style.opacity=0.2;
+		}
+		document.getElementById("loader_itg").style.display = "block";		
+		document.getElementById("loader_itg").style['z-index'] = 999;	
+	} else {
+		loads=loads-1;
+		if (loads==0) {
+			document.getElementById("loader_itg").style.display = "none";
+			document.getElementById("loader_itg").style['z-index'] = 0;	
+			for (var i=0;i<a.length;i++) {
+				a[i].style.opacity=1;
+			}
+		}
+	}
+	//console.log(loads+' '+location);
+}
+
+
+server.append(jQuery.parseHTML( "<div class='itg itg-page' id='Home'  style='display:none'>"+itg_decomp("<%=landing%>")+"</div>"));
+server.append(jQuery.parseHTML( "<div class='itg itg-page' id='Genes' style='display:none'>"+itg_decomp("<%=genes%>")+"</div>"));
+server.append(jQuery.parseHTML( "<div class='itg itg-page' id='Browser' style='display:none'>"+itg_decomp("<%=browser%>")+"</div>"));
+server.append(jQuery.parseHTML("<div class='itg itg-page' id='ITGFooter' style='display:block'><%-include ../views/footer.ejs%></div>"));
+
+server.append(jQuery.parseHTML( "<style type='text/css'><%- include ../src/logos.css  %></style>"));
+
+
+loader(1,'Start');
+server.append(jQuery.parseHTML("<link rel='stylesheet' media='all' href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' />"));
+server.append(jQuery.parseHTML("<link rel='stylesheet' media='all' href='//fonts.googleapis.com/css?family=Oswald:300,400,600,700' />"));
+var smartplot_html=itg_decomp("<%=smartplothtml%>");
+var smartplot_spec = itg_decomp("<%=smartplot%>");
+
+var samples=JSON.parse(itg_decomp('<%-samples%>'));
+samples.columns.push("RNAB_v0");
+samples.columns.push("RNAB_Log_v0");
+
+var genelist=JSON.parse(itg_decomp('<%-genelist%>'));
+
+<%-  include initialize.js  %>
+<%-  include SmartGraph.js  %>
+loadData(genelist);
+setTimeout(function() {
+	loader(1,'start of timeout');
+ 	jQuery(document).ready(function() {
+		loader(1,'start of jquery');
+		<%-  include home.js  %>
+		<%-  include genes.js  %>
+		<%-  include browser.js  %>    
+		<%-  include footer.js  %>
+		loader(0,'end of Jquery');
+	 });	 
+	 loader(0,'set timeout');
+},10);
+loader(0,'end');
+
+server.append(jQuery.parseHTML("<style>#long_switch1:checked~#long_switch1_container,#long_switch2:checked~#long_switch2_container,#long_switch3:checked~#long_switch3_container,#long_switch4:checked~#long_switch4_container,#long_switch5:checked~#long_switch5_container{display:table}#expr_switch1:checked~#expr_switch1_container,#expr_switch2:checked~#expr_switch2_container{display:table}</style>"));

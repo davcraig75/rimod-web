@@ -1,0 +1,32 @@
+{
+  "name": "rimod-ftd",
+  "version": "0.200",
+  "private": false,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.4",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
+    "crypto-js": "^3.1.9-1",
+    "dotenv": "^6.2.0",
+    "ejs": "^2.6.1",
+    "ejs-locals": "^1.0.2",
+    "express": "^4.17.1",
+    "flash": "^1.1.0",
+    "follow-redirects": "^1.13.0",
+    "http-errors": "~1.6.2",
+    "mongoose": "^5.6.6",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "tunnel-ssh": "^4.1.4",
+    "wget": "0.0.1"
+  },
+  "description": "rimod-FTD Webportal",
+  "main": "app.js",
+  "repository": "https://github.com/davcraig75/rimod-ftd.git",
+  "license": "MIT"
+}

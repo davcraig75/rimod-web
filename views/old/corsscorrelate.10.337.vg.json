@@ -1,0 +1,4734 @@
+{
+  "autosize": "none",
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "padding": 4,
+  "resize": true,
+  "width": 800,
+  "height": 800,
+  "config": {
+    "arc": {"fill": "#000"},
+    "area": {"fill": "#333333b5"},
+    "line": {"stroke": "#333333b5"},
+    "path": {"stroke": "#333333b5"},
+    "shape": {"stroke": "#333333b5"},
+    "symbol": {"fill": "#333333b5", "size": 40},
+    "axis": {
+      "domain": false,
+      "gridColor": "#d5d5d5",
+      "titleColor": "#333",
+      "labelOverlap": "parity",
+      "labelColor": "#333",
+      "gridWidth": 1,
+      "labelLimit": {"signal": "label_limit"},
+      "labelFontSize": {"signal": "AxisFontSize"},
+      "labelPadding": 4,
+      "tickColor": "#333333b5",
+      "tickSize": 5.67,
+      "titleFontSize": {"signal": "AxisTitle_Font"},
+      "titleFontWeight": "bolder"
+    },
+    "title": {
+      "fontSize": {"signal": "Title_Font"},
+      "color": "#333",
+      "fontWeight": "bolder",
+      "subtitleColor": "#777"
+    },
+    "legend": {
+      "labelBaseline": "middle",
+      "labelFontSize": {"signal": "Legend_FontSize"},
+      "cornerRadius": 5,
+      "padding": 5,
+      "offset": {"signal": "-Legend_Height"},
+      "symbolSize": 100
+    }
+  },
+  "signals": [
+    {
+      "name": "X_Axis",
+      "value": "Mutation",
+      "bind": {
+        "input": "select",
+        "element": "#X_Axissmartplot_id",
+        "options": [
+          "Sample_UID",
+          "Age",
+          "Gender",
+          "Disease",
+          "Pathology",
+          "Disease Code",
+          "Mutation",
+          "pmd_min",
+          "pH",
+          "None"
+        ]
+      }
+    },
+    {
+      "name": "Y_Axis",
+      "value": "pmd_min",
+      "bind": {
+        "input": "select",
+        "element": "#Y_Axissmartplot_id",
+        "options": [
+          "Sample_UID",
+          "Age",
+          "Gender",
+          "Disease",
+          "Pathology",
+          "Disease Code",
+          "Mutation",
+          "pmd_min",
+          "pH",
+          "None"
+        ]
+      }
+    },
+    {
+      "name": "Marker_Size_By",
+      "value": "Color_By",
+      "bind": {
+        "input": "select",
+        "element": "#Marker_Size_Bysmartplot_id",
+        "options": [
+          "Sample_UID",
+          "Age",
+          "Gender",
+          "Disease",
+          "Pathology",
+          "Disease Code",
+          "Mutation",
+          "pmd_min",
+          "pH",
+          "None"
+        ]
+      }
+    },
+    {
+      "name": "Facet_Cols_By",
+      "value": "Pathology",
+      "bind": {
+        "input": "select",
+        "element": "#Facet_Cols_Bysmartplot_id",
+        "options": [
+          "Sample_UID",
+          "Age",
+          "Gender",
+          "Disease",
+          "Pathology",
+          "Disease Code",
+          "Mutation",
+          "pmd_min",
+          "pH",
+          "None"
+        ]
+      }
+    },
+    {
+      "name": "Facet_Rows_By",
+      "value": "None",
+      "bind": {
+        "input": "select",
+        "element": "#Facet_Rows_Bysmartplot_id",
+        "options": [
+          "Sample_UID",
+          "Age",
+          "Gender",
+          "Disease",
+          "Pathology",
+          "Disease Code",
+          "Mutation",
+          "pmd_min",
+          "pH",
+          "None"
+        ]
+      }
+    },
+    {
+      "name": "Color_By",
+      "value": "Mutation",
+      "bind": {
+        "input": "select",
+        "element": "#Color_Bysmartplot_id",
+        "options": [
+          "Sample_UID",
+          "Age",
+          "Gender",
+          "Disease",
+          "Pathology",
+          "Disease Code",
+          "Mutation",
+          "pmd_min",
+          "pH",
+          "None"
+        ]
+      }
+    },
+    {
+      "name": "Opacity_By",
+      "value": "None",
+      "bind": {
+        "input": "select",
+        "element": "#Opacity_Bysmartplot_id",
+        "options": ["None"]
+      }
+    },
+    {
+      "name": "Shape",
+      "value": "circle",
+      "bind": {
+        "input": "select",
+        "element": "#Shapesmartplot_id",
+        "options": [
+          "circle",
+          "square",
+          "cross",
+          "diamond",
+          "triangle-up",
+          "triangle-down",
+          "triangle-right",
+          "triangle-left",
+          "stroke",
+          "arrow",
+          "wedge",
+          "triangle"
+        ]
+      }
+    },
+    {
+      "name": "Filter_Out_From",
+      "value": "None",
+      "bind": {
+        "input": "select",
+        "element": "#Filter_Out_Fromsmartplot_id",
+        "options": [
+          "Sample_UID",
+          "Age",
+          "Gender",
+          "Disease",
+          "Pathology",
+          "Disease Code",
+          "Mutation",
+          "pmd_min",
+          "pH",
+          "None"
+        ]
+      }
+    },
+    {"name": "graph_title", "value": ""},
+    {
+      "name": "AxisTitle_Font",
+      "value": 12,
+      "bind": {
+        "element": "#AxisTitle_Fontsmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 24,
+        "step": 1
+      }
+    },
+    {
+      "name": "Feature_Size",
+      "value": 10,
+      "bind": {
+        "element": "#Feature_Sizesmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 100,
+        "step": 1
+      }
+    },
+    {
+      "name": "label_limit",
+      "value": 200,
+      "bind": {
+        "element": "#label_limitsmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 300,
+        "step": 20
+      }
+    },
+    {
+      "name": "Marker_Opacity",
+      "value": 0.5,
+      "bind": {
+        "element": "#Marker_Opacitysmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 1,
+        "step": 0.1
+      }
+    },
+    {
+      "name": "Ticks",
+      "value": 5,
+      "bind": {
+        "element": "#Tickssmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 50,
+        "step": 1
+      }
+    },
+    {
+      "name": "Title_Font",
+      "value": 14,
+      "bind": {
+        "element": "#Title_Fontsmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 24,
+        "step": 1
+      }
+    },
+    {
+      "name": "Legend_FontSize",
+      "value": 10,
+      "bind": {
+        "element": "#Legend_FontSizesmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 24,
+        "step": 1
+      }
+    },
+    {
+      "name": "AxisFontSize",
+      "value": 10,
+      "bind": {
+        "element": "#AxisFontSizesmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 24,
+        "step": 1
+      }
+    },
+    {
+      "name": "Jitter_",
+      "value": false,
+      "bind": {"input": "checkbox", "element": "#Jitter_smartplot_id"}
+    },
+    {
+      "name": "Interactive_",
+      "value": false,
+      "bind": {"input": "checkbox", "element": "#Interactive_smartplot_id"}
+    },
+    {
+      "name": "Regression_",
+      "value": false,
+      "bind": {"input": "checkbox", "element": "#Regression_smartplot_id"}
+    },
+    {
+      "name": "Outliers_",
+      "value": true,
+      "bind": {"input": "checkbox", "element": "#Outliers_smartplot_id"}
+    },
+    {
+      "name": "Grids_",
+      "value": true,
+      "bind": {"input": "checkbox", "element": "#Gridssmartplot_id"}
+    },
+    {
+      "name": "Dashes_",
+      "value": true,
+      "bind": {"input": "checkbox", "element": "#Dashes_smartplot_id"}
+    },
+    {"name": "Map_XY_Cat_", "value": true},
+    {
+      "name": "Points_",
+      "value": true,
+      "bind": {"input": "checkbox", "element": "#Points_smartplot_id"}
+    },
+    {
+      "name": "Boxplot_",
+      "value": true,
+      "bind": {"input": "checkbox", "element": "#Boxplot_smartplot_id"}
+    },
+    {
+      "name": "Stats_",
+      "value": false,
+      "bind": {"input": "checkbox", "element": "#Stats_smartplot_id"}
+    },
+    {
+      "name": "Contours_",
+      "value": false,
+      "bind": {"input": "checkbox", "element": "#Contours_smartplot_id"}
+    },
+    {
+      "name": "Histogram_Bins_Size",
+      "value": 20,
+      "bind": {
+        "element": "#Histogram_Bins_Sizesmartplot_id",
+        "input": "range",
+        "min": 2,
+        "max": 300,
+        "step": 2
+      }
+    },
+    {"name": "col_header_fontsize", "value": 14},
+    {
+      "name": "Max_Point_Size",
+      "value": 20,
+      "bind": {
+        "element": "#Max_Point_Sizesmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 200,
+        "step": 1
+      }
+    },
+    {
+      "name": "Min_Point_Size",
+      "value": 20,
+      "bind": {
+        "element": "#Min_Point_Sizesmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 200,
+        "step": 1
+      }
+    },
+    {
+      "name": "filter_min",
+      "value": "-1000000",
+      "bind": {"element": "#filter_minsmartplot_id", "input": "text"}
+    },
+    {
+      "name": "filter_max",
+      "value": "1000000",
+      "bind": {"element": "#filter_maxsmartplot_id", "input": "text"}
+    },
+    {
+      "name": "Filter_By_Value",
+      "value": "None",
+      "bind": {
+        "input": "select",
+        "element": "#Filter_By_Valuesmartplot_id",
+        "options": ["None"]
+      }
+    },
+    {
+      "name": "Filter_Additional",
+      "value": "None",
+      "bind": {
+        "input": "select",
+        "element": "#Filter_Additionalsmartplot_id",
+        "options": [
+          "Sample_UID",
+          "Age",
+          "Gender",
+          "Disease",
+          "Pathology",
+          "Disease Code",
+          "Mutation",
+          "pmd_min",
+          "pH",
+          "None"
+        ]
+      }
+    },
+    {
+      "name": "Violin_",
+      "value": true,
+      "bind": {"input": "checkbox", "element": "#Violin_smartplot_id"}
+    },
+    {
+      "name": "LogX_",
+      "value": false,
+      "bind": {"input": "checkbox", "element": "#LogX_smartplot_id"}
+    },
+    {
+      "name": "LogY_",
+      "value": false,
+      "bind": {"input": "checkbox", "element": "#LogX_smartplot_id"}
+    },
+    {
+      "name": "Palette",
+      "value": "tableau20",
+      "bind": {
+        "input": "select",
+        "element": "#Palettesmartplot_id",
+        "options": [
+          "turbo",
+          "cividis",
+          "Viridis",
+          "Magma",
+          "Inferno",
+          "rainbow",
+          "Plasma",
+          "Blues",
+          "rainbow",
+          "Sinebow",
+          "Reds",
+          "Oranges",
+          "BlueOrange",
+          "BrownBlueGreen",
+          "PurpleGreen",
+          "PinkYellowGreen",
+          "PurpleOrange",
+          "RedBlue",
+          "RedGrey",
+          "RedYellowBlue",
+          "RedYellowGreen",
+          "category20",
+          "category10",
+          "tableau20",
+          "accent",
+          "dark2"
+        ]
+      }
+    },
+    {
+      "name": "Invert_Colors",
+      "value": false,
+      "bind": {"input": "checkbox", "element": "#Invert_Colorssmartplot_id"}
+    },
+    {
+      "name": "Reverse_Color",
+      "value": true,
+      "bind": {"input": "checkbox", "element": "#Reverse_Colorsmartplot_id"}
+    },
+    {
+      "name": "Reverse_X",
+      "value": true,
+      "bind": {"input": "checkbox", "element": "#Reverse_Xsmartplot_id"}
+    },
+    {
+      "name": "Reverse_Y",
+      "value": true,
+      "bind": {"input": "checkbox", "element": "#Reverse_Ysmartplot_id"}
+    },
+    {"name": "points", "value": true},
+    {"name": "Show_Titles", "value": true},
+    {
+      "name": "Reverse_Size",
+      "value": true,
+      "bind": {"input": "checkbox", "element": "#Reverse_Sizesmartplot_id"}
+    },
+    {
+      "name": "Opacity_",
+      "value": 1,
+      "bind": {
+        "element": "#Opacity_smartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 1,
+        "step": 0.05
+      }
+    },
+    {
+      "name": "RowTitle_Width",
+      "value": 100,
+      "bind": {
+        "element": "#RowTitle_Widthsmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 200,
+        "step": 1
+      }
+    },
+    {
+      "name": "Title_Height",
+      "value": 40,
+      "bind": {
+        "element": "#Title_Heightsmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 200,
+        "step": 1
+      }
+    },
+    {
+      "name": "Legend_Height",
+      "value": 100,
+      "bind": {
+        "element": "#Legend_Heightsmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 200,
+        "step": 1
+      }
+    },
+    {
+      "name": "Max_Plot_Height",
+      "value": 300,
+      "bind": {
+        "element": "#Max_Plot_Heightsmartplot_id",
+        "input": "range",
+        "min": 50,
+        "max": 1800,
+        "step": 25
+      }
+    },
+    {
+      "name": "PlotTitle_Height",
+      "value": 0
+    },
+    {
+      "name": "Xaxis_Height",
+      "value": 100,
+      "bind": {
+        "element": "#Xaxis_Heightsmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 200,
+        "step": 1
+      }
+    },
+    {
+      "name": "Plot_Padding",
+      "value": 20,
+      "bind": {
+        "element": "#Plot_Paddingsmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 200,
+        "step": 1
+      }
+    },
+    {
+      "name": "Max_Plot_Width",
+      "value": 800,
+      "bind": {
+        "element": "#Max_Plot_Widthsmartplot_id",
+        "input": "range",
+        "min": 50,
+        "max": 1800,
+        "step": 25
+      }
+    },
+    {
+      "name": "Row_Height",
+      "value": 100,
+      "bind": {
+        "element": "#Row_Heightsmartplot_id",
+        "input": "range",
+        "min": 50,
+        "max": 1800,
+        "step": 25
+      }
+    },
+    {
+      "name": "Maximum_Facets",
+      "value": 200,
+      "bind": {
+        "element": "#Maximum_Facetssmartplot_id",
+        "input": "range",
+        "min": 1,
+        "max": 200,
+        "step": 1
+      }
+    },
+    {
+      "name": "Hist_Scatter_Ratio",
+      "value": 0.2,
+      "bind": {
+        "element": "#Hist_Scatter_Ratiosmartplot_id",
+        "input": "range",
+        "min": 0,
+        "max": 1,
+        "step": 0.1
+      }
+    },
+    
+    {
+      "name": "Column_Width",
+      "update": "if((width-RowTitle_Width)/cols_count>Max_Plot_Width,Max_Plot_Width,(width-RowTitle_Width)/cols_count)"
+    },
+    {"name": "Plot_Width", "update": "Column_Width-Plot_Padding*2"},
+    {
+      "name": "margin_hz",
+      "update": "max(0,(width-Column_Width*cols_count-RowTitle_Width)/2)"
+    },
+    {
+      "name": "Plot_Height",
+      "update": "if(rows_count>1,Row_Height-Plot_Padding,Max_Plot_Height-Plot_Padding)"
+    },
+    {"name": "row_ht", "update": "Plot_Height+Plot_Padding"},
+    {
+      "name": "height",
+      "update": "if(rows_count>1,rows_count*Row_Height+Title_Height+Legend_Height+PlotTitle_Height+Xaxis_Height,Max_Plot_Height+Title_Height+Legend_Height+PlotTitle_Height+Xaxis_Height)"
+    },
+    {"name": "StrokeWidth", "value": 2},
+    {"name": "Xord", "update": "if(indata('tdata', 'Xstr', true),true,false)"},
+    {
+      "name": "Yord",
+      "update": "if(Y_Axis=='None',true,if(indata('tdata', 'Ystr', true),true,false))"
+    },
+    {
+      "name": "Cord",
+      "update": "if(Color_By=='None',true,if(indata('tdata', 'Cstr', true),true,false))"
+    },
+    {
+      "name": "Mord",
+      "update": "if(Facet_Cols_By=='None',true,if(indata('tdata', 'Mstr', true),true,false))"
+    },
+    {
+      "name": "M2ord",
+      "update": "if(Facet_Rows_By=='None',true,if(indata('tdata', 'Mstr2', true),true,false))"
+    },
+    {"name": "fail", "update": "length(data('cols_domain'))>Maximum_Facets"},
+    {"name": "colors_count", "update": "length(data('colors_domain'))"},
+    {"name": "cols_count", "update": "length(data('cols_domain'))"},
+    {"name": "rows_count", "update": "length(data('rows_domain'))"},
+    {
+      "name": "clickedFilter",
+      "value": null,
+      "on": [
+        {
+          "events": "@filterLegendlab:click, @filterLegendlab2:click",
+          "update": "{value: datum.value}",
+          "force": true
+        }
+      ]
+    },
+    {
+      "name": "show_box_graphs",
+      "update": "Xord && !Yord && Y_Axis != 'None' && !fail"
+    },
+    {
+      "name": "show_stacked_graphs",
+      "update": "Xord && Y_Axis == 'None' && !fail"
+    },
+    {"name": "steps", "value": 30},
+    {
+      "name": "violin_width",
+      "update": "0.8*Plot_Width / length(data('xcat_domain'))"
+    },
+    {
+      "name": "Hist_Scatter_Ratio2",
+      "update": "if(Y_Axis != 'None',Hist_Scatter_Ratio,1)"
+    },
+    {
+      "name": "show_hist_graph",
+      "update": "(!Xord && Hist_Scatter_Ratio2!=0) || (Yord=='None')"
+    },
+    {
+      "name": "show_scatter_graph",
+      "update": "!Xord && Hist_Scatter_Ratio2!=1 && !Yord && Y_Axis != 'None'"
+    },
+    {
+      "name": "show_grid_graphs",
+      "update": "Xord && Yord && Y_Axis != 'None' && !fail && Map_XY_Cat_"
+    },
+    {"name": "bandwidth", "value": -1},
+    {"name": "resolve", "value": "shared"},
+    {"name": "counts", "value": true},
+    {"name": "mytitle", "value": ""},
+    {"name": "graph_sum_vars", "value": 0},
+    {
+      "name": "hist_graph_height",
+      "update": "Plot_Height*(Hist_Scatter_Ratio2)"
+    },
+    {"name": "scatter_graph_height", "update": "Plot_Height-hist_graph_height"},
+    {"name": "yd"},
+    {"name": "xd"}
+  ],
+  "data": [
+    {
+      "name": "mydata",
+      "transform": [
+        {"type": "formula", "as": "None", "expr": "'None'"},
+        {"type": "formula", "as": "mycount", "expr": "1"},
+        {"type": "formula", "as": "My_X_Value", "expr": "datum[X_Axis]"},
+        {
+          "type": "filter",
+          "expr": "if(X_Axis != 'None' && datum[X_Axis]=='NA',false,true)"
+        },
+        {"type": "formula", "as": "My_Y_Value", "expr": "datum[Y_Axis]"},
+        {
+          "type": "filter",
+          "expr": "if(Y_Axis != 'None' && datum[Y_Axis]=='NA',false,true)"
+        },
+        {"type": "formula", "as": "My_C_Value", "expr": "datum[Color_By]"},
+        {"type": "formula", "as": "My_M_Value", "expr": "datum[Facet_Cols_By]"},
+        {"type": "formula", "as": "My_O_Value", "expr": "datum[Opacity_By]"},
+        {
+          "type": "formula",
+          "as": "My_M2_Value",
+          "expr": "datum[Facet_Rows_By]"
+        },
+        {
+          "type": "formula",
+          "as": "My_S_Value",
+          "expr": "if(isFinite(toNumber(datum[Marker_Size_By])),toNumber(datum[Marker_Size_By]),Feature_Size)"
+        },
+        {
+          "type": "filter",
+          "expr": "if(X_Axis != 'None',isValid(datum.My_X_Value),true)"
+        },
+        {
+          "type": "filter",
+          "expr": "if(Marker_Size_By != 'None',isValid(datum.My_S_Value),true)"
+        },
+        {
+          "type": "filter",
+          "expr": "if(Y_Axis != 'None',isValid(datum.My_Y_Value),true)"
+        },
+        {
+          "type": "filter",
+          "expr": "if(Color_By != 'None',isValid(datum.My_C_Value),true)"
+        },
+        {
+          "type": "filter",
+          "expr": "if(Facet_Cols_By != 'None',isValid(datum.My_M_Value),true)"
+        },
+        {
+          "type": "filter",
+          "expr": "if(Facet_Rows_By != 'None',isValid(datum.My_M2_Value),true)"
+        },
+        {
+          "type": "formula",
+          "as": "Ystr",
+          "expr": "!isFinite(toNumber(datum['My_Y_Value']))"
+        },
+        {
+          "type": "formula",
+          "as": "Xstr",
+          "expr": "!isFinite(toNumber(datum['My_X_Value']))"
+        },
+        {
+          "type": "formula",
+          "as": "Mstr",
+          "expr": "!isFinite(toNumber(datum['My_M_Value']))"
+        },
+        {
+          "type": "formula",
+          "as": "Cstr",
+          "expr": "!isFinite(toNumber(datum['My_C_Value']))"
+        }
+      ],
+      "values": [
+        {
+          "Sample_UID": "rimod27",
+          "Age": 58,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 330,
+          "pH": 6.66,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 330,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod38",
+          "Age": 64,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 545,
+          "pH": 6.23,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 545,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod11",
+          "Age": 60,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 305,
+          "pH": 6.28,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 305,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod39",
+          "Age": 59,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 720,
+          "pH": null,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 720,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod40",
+          "Age": 74,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 310,
+          "pH": 6.15,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 310,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod35",
+          "Age": 70,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 280,
+          "pH": 6.64,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 280,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod33",
+          "Age": 67,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 405,
+          "pH": 6.29,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 405,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod15",
+          "Age": 64,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 275,
+          "pH": 6.25,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 275,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod3",
+          "Age": 63,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 285,
+          "pH": 6.45,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 285,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod53",
+          "Age": 72,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 290,
+          "pH": 6.25,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 290,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod57",
+          "Age": 42,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 345,
+          "pH": 6.93,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 345,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod42",
+          "Age": 68,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 410,
+          "pH": 6.77,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 410,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod25",
+          "Age": 68,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 260,
+          "pH": 6.25,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 260,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod20",
+          "Age": 67,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 144,
+          "pH": null,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 144,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod10",
+          "Age": 41,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72_homozygote",
+          "pmd_min": 475.2,
+          "pH": null,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72_homozygote",
+          "My_Y_Value": 475.2,
+          "My_C_Value": "C9orf72_homozygote",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod8",
+          "Age": 62,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 72,
+          "pH": null,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 72,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod23",
+          "Age": 60,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.C9",
+          "Mutation": "C9orf72",
+          "pmd_min": 288,
+          "pH": null,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "C9orf72",
+          "My_Y_Value": 288,
+          "My_C_Value": "C9orf72",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod66",
+          "Age": 52,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.GRN",
+          "Mutation": null,
+          "pmd_min": null,
+          "pH": null,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": null,
+          "My_C_Value": null,
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod31",
+          "Age": 66,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.GRN",
+          "Mutation": "Gly300X",
+          "pmd_min": 315,
+          "pH": 6.45,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "Gly300X",
+          "My_Y_Value": 315,
+          "My_C_Value": "Gly300X",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod28",
+          "Age": 63,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.GRN",
+          "Mutation": null,
+          "pmd_min": 365,
+          "pH": 6.27,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 365,
+          "My_C_Value": null,
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod29",
+          "Age": 76,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.GRN",
+          "Mutation": "Ser82ValfsX174",
+          "pmd_min": 215,
+          "pH": 6.1,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "Ser82ValfsX174",
+          "My_Y_Value": 215,
+          "My_C_Value": "Ser82ValfsX174",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod24",
+          "Age": 52,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.GRN",
+          "Mutation": "Ser82ValfsX174",
+          "pmd_min": 230,
+          "pH": 6.48,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "Ser82ValfsX174",
+          "My_Y_Value": 230,
+          "My_C_Value": "Ser82ValfsX174",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod2",
+          "Age": 69,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.GRN",
+          "Mutation": "Gly125X",
+          "pmd_min": 325,
+          "pH": 6.44,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "Gly125X",
+          "My_Y_Value": 325,
+          "My_C_Value": "Gly125X",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod72",
+          "Age": 58,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.GRN",
+          "Mutation": "Ser82ValfsX174",
+          "pmd_min": 360,
+          "pH": 6.19,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "Ser82ValfsX174",
+          "My_Y_Value": 360,
+          "My_C_Value": "Ser82ValfsX174",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod13",
+          "Age": 67,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.GRN",
+          "Mutation": "Ser82ValfsX174",
+          "pmd_min": 255,
+          "pH": 6.2,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "Ser82ValfsX174",
+          "My_Y_Value": 255,
+          "My_C_Value": "Ser82ValfsX174",
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod9",
+          "Age": 61,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.GRN",
+          "Mutation": null,
+          "pmd_min": 504,
+          "pH": null,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 504,
+          "My_C_Value": null,
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod41",
+          "Age": 59,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.GRN",
+          "Mutation": null,
+          "pmd_min": 285,
+          "pH": 6.52,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 285,
+          "My_C_Value": null,
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod49",
+          "Age": 74,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "TDP",
+          "Disease Code": "FTD.GRN",
+          "Mutation": null,
+          "pmd_min": 720,
+          "pH": null,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 720,
+          "My_C_Value": null,
+          "My_M_Value": "TDP",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod18",
+          "Age": 66,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "P301L",
+          "pmd_min": 300,
+          "pH": 6.3,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "P301L",
+          "My_Y_Value": 300,
+          "My_C_Value": "P301L",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod55",
+          "Age": 63,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "L315R",
+          "pmd_min": 255,
+          "pH": 6.36,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "L315R",
+          "My_Y_Value": 255,
+          "My_C_Value": "L315R",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod61",
+          "Age": 63,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "G272V",
+          "pmd_min": 250,
+          "pH": 6.64,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "G272V",
+          "My_Y_Value": 250,
+          "My_C_Value": "G272V",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod59",
+          "Age": 75,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "R406V",
+          "pmd_min": 445,
+          "pH": 6.6,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "R406V",
+          "My_Y_Value": 445,
+          "My_C_Value": "R406V",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod5",
+          "Age": 46,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "P301L",
+          "pmd_min": 335,
+          "pH": 6.48,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "P301L",
+          "My_Y_Value": 335,
+          "My_C_Value": "P301L",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod43",
+          "Age": 66,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "P301L",
+          "pmd_min": 400,
+          "pH": 6.52,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "P301L",
+          "My_Y_Value": 400,
+          "My_C_Value": "P301L",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod34",
+          "Age": 54,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "G272V",
+          "pmd_min": 450,
+          "pH": 6.46,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "G272V",
+          "My_Y_Value": 450,
+          "My_C_Value": "G272V",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod37",
+          "Age": 49,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "G272V",
+          "pmd_min": 310,
+          "pH": 6.54,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "G272V",
+          "My_Y_Value": 310,
+          "My_C_Value": "G272V",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod62",
+          "Age": 68,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "L315R",
+          "pmd_min": 340,
+          "pH": 6.6,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "L315R",
+          "My_Y_Value": 340,
+          "My_C_Value": "L315R",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod68",
+          "Age": 52,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "P301L",
+          "pmd_min": 690,
+          "pH": null,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "P301L",
+          "My_Y_Value": 690,
+          "My_C_Value": "P301L",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod47",
+          "Age": 51,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "G272V",
+          "pmd_min": 265,
+          "pH": 6.1,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "G272V",
+          "My_Y_Value": 265,
+          "My_C_Value": "G272V",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod58",
+          "Age": 60,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "P301L",
+          "pmd_min": 323,
+          "pH": 6.3,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "P301L",
+          "My_Y_Value": 323,
+          "My_C_Value": "P301L",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod22",
+          "Age": 64,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "P301L",
+          "pmd_min": 450,
+          "pH": 5.91,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "P301L",
+          "My_Y_Value": 450,
+          "My_C_Value": "P301L",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod54",
+          "Age": 64,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "P301L",
+          "pmd_min": 385,
+          "pH": 6.38,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "P301L",
+          "My_Y_Value": 385,
+          "My_C_Value": "P301L",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod60",
+          "Age": 60,
+          "Gender": "Male",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "P301L",
+          "pmd_min": 280,
+          "pH": 6.45,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "P301L",
+          "My_Y_Value": 280,
+          "My_C_Value": "P301L",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod70",
+          "Age": 64,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "P301L",
+          "pmd_min": 310,
+          "pH": 6.4,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "P301L",
+          "My_Y_Value": 310,
+          "My_C_Value": "P301L",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod67",
+          "Age": 76,
+          "Gender": "Female",
+          "Disease": "FTD",
+          "Pathology": "Tau",
+          "Disease Code": "FTD.MAPT",
+          "Mutation": "P301L",
+          "pmd_min": 380,
+          "pH": null,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": "P301L",
+          "My_Y_Value": 380,
+          "My_C_Value": "P301L",
+          "My_M_Value": "Tau",
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10,
+          "Ystr": false,
+          "Xstr": true,
+          "Mstr": true,
+          "Cstr": true
+        },
+        {
+          "Sample_UID": "rimod19",
+          "Age": 91,
+          "Gender": "Male",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 480,
+          "pH": 6.26,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 480,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod30",
+          "Age": 60,
+          "Gender": "Female",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 450,
+          "pH": 6.8,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 450,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod51",
+          "Age": 89,
+          "Gender": "Female",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 370,
+          "pH": 6.36,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 370,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod64",
+          "Age": 70,
+          "Gender": "Male",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 215,
+          "pH": 7.2,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 215,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod16",
+          "Age": 83,
+          "Gender": "Male",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 345,
+          "pH": 6.35,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 345,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod12",
+          "Age": 85,
+          "Gender": "Female",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 425,
+          "pH": null,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 425,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod7",
+          "Age": 82,
+          "Gender": "Male",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 350,
+          "pH": 6.57,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 350,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod48",
+          "Age": 49,
+          "Gender": "Male",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 375,
+          "pH": 6.23,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 375,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod71",
+          "Age": 87,
+          "Gender": "Female",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 420,
+          "pH": 6.92,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 420,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod32",
+          "Age": 76,
+          "Gender": "Female",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 435,
+          "pH": 6.87,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 435,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod44",
+          "Age": 75,
+          "Gender": "Female",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 325,
+          "pH": 6.75,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 325,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod65",
+          "Age": 84,
+          "Gender": "Female",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 355,
+          "pH": 6.1,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 355,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod52",
+          "Age": 89,
+          "Gender": "Female",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 340,
+          "pH": 6.75,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 340,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod36",
+          "Age": 84,
+          "Gender": "Female",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 336,
+          "pH": 6.68,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 336,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod1",
+          "Age": 83,
+          "Gender": "Female",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 363,
+          "pH": 6.6,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 363,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": "rimod56",
+          "Age": 88,
+          "Gender": "Male",
+          "Disease": "Control",
+          "Pathology": null,
+          "Disease Code": "Control",
+          "Mutation": null,
+          "pmd_min": 340,
+          "pH": 7.3,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": 340,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        },
+        {
+          "Sample_UID": null,
+          "Age": null,
+          "Gender": null,
+          "Disease": null,
+          "Pathology": null,
+          "Disease Code": null,
+          "Mutation": null,
+          "pmd_min": null,
+          "pH": null,
+          "None": "None",
+          "mycount": 1,
+          "My_X_Value": null,
+          "My_Y_Value": null,
+          "My_C_Value": null,
+          "My_M_Value": null,
+          "My_O_Value": "None",
+          "My_M2_Value": "None",
+          "My_S_Value": 10
+        }
+      ]
+    },
+    {
+      "name": "selectedFilter",
+      "on": [{"trigger": "clickedFilter", "toggle": "clickedFilter"}]
+    },
+    {
+      "name": "selectedFilter2",
+      "on": [{"trigger": "clickedFilter", "toggle": "clickedFilter"}]
+    },
+    {
+      "name": "tdata",
+      "source": "mydata",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "!indata('selectedFilter', 'value', datum[Filter_Out_From])"
+        },
+        {
+          "type": "filter",
+          "expr": "!indata('selectedFilter2', 'value', datum[Filter_Additional])"
+        },
+        {"type": "extent", "field": "My_Y_Value", "signal": "Y_maxmin_num"},
+        {"type": "extent", "field": "My_X_Value", "signal": "X_maxmin_num"}
+      ]
+    },
+    {
+      "name": "colors_domain",
+      "source": "tdata",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "if(Filter_By_Value!='None',if(datum[Filter_By_Value]>=toNumber(filter_min)&datum[Filter_By_Value]<=toNumber(filter_max),true,false),true)"
+        },
+        {"type": "collect", "sort": {"field": "My_C_Value"}},
+        {"type": "aggregate", "groupby": ["My_C_Value"]}
+      ]
+    },
+    {
+      "name": "cols_domain",
+      "source": "tdata",
+      "transform": [
+        {"type": "aggregate", "groupby": ["My_M_Value"]},
+        {"type": "collect", "sort": {"field": "My_M_Value"}},
+        {"type": "formula", "as": "data", "expr": "datum['My_M_Value']"}
+      ]
+    },
+    {
+      "name": "rows_domain",
+      "source": "tdata",
+      "transform": [
+        {"type": "aggregate", "groupby": ["My_M2_Value"]},
+        {"type": "collect", "sort": {"field": "My_M2_Value"}},
+        {"type": "formula", "as": "data", "expr": "datum['My_M2_Value']"}
+      ]
+    },
+    {
+      "name": "graph_stackplots",
+      "values": [1],
+      "transform": [{"type": "filter", "expr": "show_stacked_graphs"}]
+    },
+    {
+      "name": "graph_boxplots",
+      "values": [1],
+      "transform": [{"type": "filter", "expr": "show_box_graphs"}]
+    },
+    {
+      "name": "graph_grids",
+      "values": [1],
+      "transform": [{"type": "filter", "expr": "show_grid_graphs"}]
+    },
+    {
+      "name": "graph_scatter",
+      "values": [1],
+      "transform": [
+        {"type": "filter", "expr": "show_scatter_graph||show_hist_graph"}
+      ]
+    },
+    {
+      "name": "xcat_domain",
+      "source": "tdata",
+      "transform": [{"type": "aggregate", "groupby": ["My_X_Value"]}]
+    }
+  ],
+  "scales": [
+    {
+      "name": "color_scale_cat",
+      "type": "ordinal",
+      "domain": {"data": "colors_domain", "sort": true, "field": "My_C_Value"},
+      "range": {"scheme": {"signal": "Palette"}}
+    },
+    {
+      "name": "color_scale_cont",
+      "type": "quantize",
+      "range": {"scheme": {"signal": "Palette"}, "count": 20},
+      "reverse": {"signal": "Invert_Colors"},
+      "domain": {"data": "tdata", "field": "My_C_Value"}
+    },
+    {
+      "name": "filter_scale",
+      "type": "ordinal",
+      "range": {"scheme": {"signal": "Palette"}},
+      "domain": {
+        "data": "mydata",
+        "field": {"signal": "Filter_Out_From"},
+        "sort": true
+      }
+    },
+    {
+      "name": "filter_scale2",
+      "type": "ordinal",
+      "range": {"scheme": {"signal": "Palette"}},
+      "domain": {
+        "data": "mydata",
+        "field": {"signal": "Filter_Additional"},
+        "sort": true
+      }
+    },
+    {
+      "name": "row_scale",
+      "type": "band",
+      "range": [
+        {"signal": "PlotTitle_Height"},
+        {"signal": "Row_Height*rows_count"}
+      ],
+      "domain": {"data": "rows_domain", "field": "data", "sort": true}
+    },
+    {
+      "name": "col_scale",
+      "type": "band",
+      "range": [
+        {"signal": "RowTitle_Width"},
+        {"signal": "width"}
+      ],
+      "domain": {"data": "cols_domain", "field": "data", "sort": true}
+    }
+  ],
+  "marks": [
+    {
+      "type": "group",
+      "interactive": true,
+      "name": "title_graphs",
+      "encode": {
+        "update": {
+          "height": {"signal": "Title_Height"},
+          "x": {"signal": "margin_hz"},
+          "width": {"signal": "width-margin_hz*2"},
+          "y": {"signal": "0"}
+        }
+      },
+      "title": {
+        "text": {
+          "signal": "if(graph_title,graph_title+ ':','')+if(X_Axis!='None',X_Axis,'')+if(Y_Axis!='None',' vs. '+Y_Axis,'')"
+        },
+        "subtitle": {
+          "signal": "if(Facet_Cols_By!='None',' by '+Facet_Cols_By,'')+if(Facet_Cols_By!='None',' by '+Facet_Rows_By,'')+if(Color_By!='None','~'+Color_By,'')"
+        },
+        "dy": {"signal": "Title_Height"},
+        "anchor": "middle"
+      }
+    },
+    {
+      "type": "group",
+      "interactive": true,
+      "name": "multi_scatter",
+      "from": {"data": "graph_scatter"},
+      "marks": [
+        {
+          "type": "group",
+          "interactive": true,
+          "encode": {
+            "update": {
+              "height": {
+                "signal": "height-Title_Height-Xaxis_Height-Legend_Height"
+              },
+              "x": {"signal": "margin_hz"},
+              "width": {"signal": "width-margin_hz*2"},
+              "y": {"signal": "Title_Height"}
+            }
+          },
+          "signals": [
+            {
+              "name": "xcur",
+              "value": null,
+              "on": [
+                {
+                  "events": "mousedown, touchstart, touchend",
+                  "update": "Interactive_ ? slice(xdom) : xcur"
+                }
+              ]
+            },
+            {
+              "name": "ycur",
+              "value": null,
+              "on": [
+                {
+                  "events": "mousedown, touchstart, touchend",
+                  "update": "Interactive_ ? slice(ydom) : ycur"
+                }
+              ]
+            },
+            {
+              "name": "delta",
+              "value": [0, 0],
+              "on": [
+                {
+                  "events": [
+                    {
+                      "source": "scope",
+                      "type": "mousemove",
+                      "consume": true,
+                      "between": [
+                        {"type": "mousedown"},
+                        {"source": "scope", "type": "mouseup"}
+                      ]
+                    },
+                    {
+                      "type": "touchmove",
+                      "consume": true,
+                      "filter": "event.touches.length === 1"
+                    }
+                  ],
+                  "update": "Interactive_ & down ? [down[0]-x(), down[1]-y()] : [0,0]"
+                }
+              ]
+            },
+            {
+              "name": "anchor",
+              "value": [0, 0],
+              "on": [
+                {
+                  "events": "wheel",
+                  "update": "Interactive_ ? [invert('x_cont_scale', x()), invert('y_cont_scale', y())] : [0,0]"
+                },
+                {
+                  "events": {
+                    "type": "touchstart",
+                    "filter": "event.touches.length===2"
+                  },
+                  "update": "Interactive_ ? [(xdom[0] + xdom[1]) / 2, (ydom[0] + ydom[1]) / 2] : [0, 0]"
+                }
+              ]
+            },
+            {
+              "name": "zoom",
+              "value": 1,
+              "on": [
+                {
+                  "events": "wheel!",
+                  "force": true,
+                  "update": "Interactive_ ? pow(1.001, event.deltaY * pow(16, event.deltaMode)) : 1"
+                },
+                {
+                  "events": {"signal": "dist2"},
+                  "force": true,
+                  "update": "Interactive_ ? dist1 / dist2 : 1"
+                }
+              ]
+            },
+            {
+              "name": "dist1",
+              "value": 0,
+              "on": [
+                {
+                  "events": {
+                    "type": "touchstart",
+                    "filter": "event.touches.length===2"
+                  },
+                  "update": "Interactive_ ? pinchDistance(event) : 0"
+                },
+                {
+                  "events": {"signal": "dist2"},
+                  "update": "Interactive_ ? dist2 : 0"
+                }
+              ]
+            },
+            {
+              "name": "dist2",
+              "value": 0,
+              "on": [
+                {
+                  "events": {
+                    "type": "touchmove",
+                    "consume": true,
+                    "filter": "event.touches.length===2"
+                  },
+                  "update": "Interactive_ ? pinchDistance(event) : 0"
+                }
+              ]
+            },
+            {
+              "name": "xdom",
+              "update": "slice(X_maxmin_num)",
+              "react": true,
+              "on": [
+                {
+                  "events": {"signal": "delta"},
+                  "update": "[xcur[0] + span(xcur) * delta[0] / Plot_Width, xcur[1] + span(xcur) * delta[0] / Plot_Width]"
+                },
+                {
+                  "events": {"signal": "zoom"},
+                  "update": "[anchor[0] + (xdom[0] - anchor[0]) * zoom, anchor[0] + (xdom[1] - anchor[0]) * zoom]"
+                }
+              ]
+            },
+            {
+              "name": "ydom",
+              "update": "slice(Y_maxmin_num)",
+              "react": true,
+              "on": [
+                {
+                  "events": {"signal": "delta"},
+                  "update": "[ycur[0] + span(ycur) * delta[1] / Plot_Height, ycur[1] + span(ycur) * delta[1] / Plot_Height]"
+                },
+                {
+                  "events": {"signal": "zoom"},
+                  "update": "[anchor[1] + (ydom[0] - anchor[1]) * zoom, anchor[1] + (ydom[1] - anchor[1]) * zoom]"
+                }
+              ]
+            },
+            {
+              "name": "down",
+              "value": null,
+              "on": [
+                {"events": "touchend", "update": "down"},
+                {
+                  "events": "mousedown, touchstart",
+                  "update": "Interactive_ ? xy() : down"
+                }
+              ]
+            }
+          ],
+          "data": [
+            {
+              "name": "row_instance",
+              "source": "rows_domain",
+              "transform": [
+                {
+                  "type": "filter",
+                  "expr": "show_scatter_graph||show_hist_graph"
+                }
+              ]
+            },
+            {
+              "name": "col_instance",
+              "source": "cols_domain",
+              "transform": [
+                {
+                  "type": "filter",
+                  "expr": "show_scatter_graph||show_hist_graph"
+                }
+              ]
+            },
+            {
+              "name": "num_data",
+              "source": "tdata",
+              "transform": [
+                {"type": "filter", "expr": "!fail"},
+                {
+                  "type": "filter",
+                  "expr": "show_hist_graph || show_scatter_graph"
+                },
+                {
+                  "type": "formula",
+                  "as": "My_Y_Value",
+                  "expr": "if(!Yord && Y_Axis!='None',if(LogY_,log(toNumber(datum[Y_Axis])),toNumber(datum[Y_Axis])),null)"
+                },
+                {
+                  "type": "formula",
+                  "as": "My_X_Value",
+                  "expr": "if(!Xord && X_Axis!='None',if(LogX_,log(toNumber(datum[X_Axis])),toNumber(datum[X_Axis])),null)"
+                },
+                {
+                  "type": "filter",
+                  "expr": "if(Filter_By_Value!='None',if(datum[Filter_By_Value]>=toNumber(filter_min)&datum[Filter_By_Value]<=toNumber(filter_max),true,false),true)"
+                },
+                {
+                  "type": "filter",
+                  "expr": "!isNumber(isValid(datum['My_Y_Value']))"
+                },
+                {
+                  "type": "filter",
+                  "expr": "!isNumber(isValid(datum['My_X_Value']))"
+                }
+              ]
+            },
+            {
+              "name": "filtered_instance",
+              "source": "num_data",
+              "transform": [
+                {
+                  "type": "filter",
+                  "expr": "show_scatter_graph||show_hist_graph"
+                }
+              ]
+            }
+          ],
+          "scales": [
+            {
+              "name": "y_cont_scale",
+              "type": "linear",
+              "zero": false,
+              "round": true,
+              "reverse": {"signal": "Reverse_Y"},
+              "domain": {"signal": "ydom"},
+              "range": [
+                {"signal": "hist_graph_height"},
+                {"signal": "Plot_Height"}
+              ]
+            },
+            {
+              "name": "x_cont_scale",
+              "type": "linear",
+              "round": true,
+              "zero": false,
+              "reverse": {"signal": "Reverse_X"},
+              "domain": {"signal": "xdom"},
+              "range": [{"signal": "0"}, {"signal": "Plot_Width"}]
+            }
+          ],
+          "marks": [
+            {
+              "name": "row_header",
+              "type": "group",
+              "from": {"data": "row_instance"},
+              "encode": {
+                "update": {
+                  "height": {"signal": "Plot_Height"},
+                  "width": {"signal": "RowTitle_Width"},
+                  "y": {"field": "data", "scale": "row_scale"},
+                  "x": {"signal": "RowTitle_Width-5"}
+                }
+              },
+              "title": {
+                "text": {"signal": "if(Facet_Rows_By=='None',Y_Axis,'')"},
+                "orient": "left"
+              },
+              "axes": [
+                {
+                  "scale": "y_cont_scale",
+                  "gridScale": "x_cont_scale",
+                  "domain": true,
+                  "title": "title",
+                  "offset": {"signal": "0"},
+                  "tickCount": 3,
+                  "zindex": 0,
+                  "encode": {
+                    "title": {
+                      "update": {
+                        "text": {
+                          "signal": "if(parent.data=='None' ,'',parent.data)"
+                        },
+                        "align": {"value": "left"}
+                      }
+                    }
+                  },
+                  "orient": "left",
+                  "labels": true
+                }
+              ]
+            },
+            {
+              "name": "col_footer",
+              "type": "group",
+              "from": {"data": "col_instance"},
+              "encode": {
+                "update": {
+                  "width": {"signal": "Plot_Width"},
+                  "height": {"signal": "Xaxis_Height"},
+                  
+                  "x": {"signal": "datum.data", "scale": "col_scale"},
+                  "y": {
+                    "signal": "row_ht*rows_count-Plot_Padding+4+PlotTitle_Height"
+                  }
+                }
+              },
+              "axes": [
+                {
+                  "scale": "x_cont_scale",
+                  "gridScale": "y_cont_scale",
+                  "domain": true,
+                  "zindex": 0,
+                  "tickCount": 3,
+                  "title": "title",
+                  "offset": {"signal": "-Xaxis_Height"},
+                  "encode": {
+                    "title": {
+                      "update": {
+                        "text": {
+                          "signal": "if(parent.data=='None','',parent.data)"
+                        },
+                        "align": {"value": "center"}
+                      },
+                      "labels": {"update": {"angle": {"value": -90}}}
+                    }
+                  },
+                  "orient": "bottom",
+                  "labels": true
+                }
+              ]
+            },
+            {
+              "name": "MultiGraphs",
+              "type": "group",
+              "from": {
+                "facet": {
+                  "name": "facet_data",
+                  "data": "filtered_instance",
+                  "groupby": ["My_M2_Value", "My_M_Value"]
+                }
+              },
+              "encode": {
+                "update": {
+                  "width": {"signal": "Plot_Width"},
+                  "x": {"signal": "datum.My_M_Value", "scale": "col_scale"},
+                  "y": {"signal": "datum.My_M2_Value", "scale": "row_scale"},
+                  "height": {"signal": "Plot_Height"},
+                  "fill": {"value": "#EEE"},
+                  "fillOpacity": {"value": 0.1},
+                  "stroke": {"value": "#ccc"},
+                  "strokeWidth": {"value": 0.5}
+                }
+              },
+              "scales": [
+                {
+                  "name": "y_cont_scale2",
+                  "type": "linear",
+                  "zero": false,
+                  "round": true,
+                  "domain": {"signal": "ydom"},
+                  "range": [{"signal": "0"}, {"signal": "scatter_graph_height"}]
+                },
+                {
+                  "name": "hist_graph_scale",
+                  "type": "linear",
+                  "range": [{"signal": "hist_graph_height"}, {"signal": "0"}],
+                  "round": true,
+                  "nice": true,
+                  "domain": {
+                    "data": "histstackmarks_data",
+                    "fields": ["y0", "y1"]
+                  }
+                },
+                {
+                  "name": "size_scale",
+                  "type": "pow",
+                  "exponent": 2,
+                  "round": true,
+                  "nice": true,
+                  "zero": false,
+                  "reverse": {"signal": "Reverse_Size"},
+                  "domain": {
+                    "data": "filtered_instance",
+                    "field": "My_S_Value"
+                  },
+                  "range": [
+                    {"signal": "Min_Point_Size"},
+                    {"signal": "Max_Point_Size"}
+                  ]
+                }
+              ],
+              "axes": [
+                {
+                  "scale": "hist_graph_scale",
+                  "domain": false,
+                  "grid": true,
+                  "tickCount": {"signal": "Ticks"},
+                  "orient": "left",
+                  "ticks": false,
+                  "title": "Title",
+                  "gridScale": "x_cont_scale",
+                  "encode": {
+                    "grid": {
+                      "update": {
+                        "strokeOpacity": {
+                          "signal": "if(Grids_ && !show_scatter_graph,1,0)"
+                        }
+                      }
+                    },
+                    "labels": {
+                      "update": {
+                        "fillOpacity": {"signal": "if(!show_scatter_graph,1,0)"}
+                      }
+                    },
+                    "title": {
+                      "update": {
+                        "text": {
+                          "signal": "if(!show_scatter_graph && parent.My_M_Value=='None' ,parent.My_M2_Value,'')"
+                        },
+                        "align": {"value": "left"}
+                      }
+                    }
+                  },
+                  "labels": true
+                },
+                {
+                  "scale": "x_cont_scale",
+                  "domain": false,
+                  "grid": true,
+                  "tickCount": {"signal": "Ticks"},
+                  "orient": "bottom",
+                  "gridScale": "hist_graph_scale",
+                  "ticks": false,
+                  "encode": {
+                    "grid": {
+                      "update": {"strokeOpacity": {"signal": "if(Grids_,1,0)"}}
+                    }
+                  },
+                  "labels": false
+                }
+              ],
+              "data": [
+                {
+                  "name": "scatter_data",
+                  "source": "facet_data",
+                  "transform": [
+                    {"type": "filter", "expr": "show_scatter_graph"}
+                  ]
+                },
+                {
+                  "name": "histcounts_data",
+                  "source": "facet_data",
+                  "transform": [
+                    {
+                      "type": "bin",
+                      "field": "My_X_Value",
+                      "extent": {"signal": "xdom"},
+                      "nice": false,
+                      "maxbins": {"signal": "Histogram_Bins_Size"}
+                    },
+                    {"type": "filter", "expr": "show_hist_graph"},
+                    {
+                      "type": "aggregate",
+                      "groupby": ["bin0", "bin1", "My_C_Value"]
+                    }
+                  ]
+                },
+                {
+                  "name": "histstackmarks_data",
+                  "source": "histcounts_data",
+                  "transform": [
+                    {
+                      "type": "stack",
+                      "offset": "zero",
+                      "groupby": ["bin0"],
+                      "sort": {"field": "My_C_Value"},
+                      "field": "count"
+                    }
+                  ]
+                },
+                {
+                  "name": "correl_data",
+                  "source": "facet_data",
+                  "transform": [
+                    {"type": "filter", "expr": "Cord"},
+                    {"type": "filter", "expr": "Regression_"},
+                    {
+                      "type": "regression",
+                      "groupby": [
+                        {
+                          "signal": "if(colors_count<10 & Regression_,Color_By,'None')"
+                        }
+                      ],
+                      "method": "linear",
+                      "params": true,
+                      "x": "My_X_Value",
+                      "y": "My_Y_Value",
+                      "as": ["u", "v"]
+                    }
+                  ]
+                },
+                {
+                  "name": "run_correl",
+                  "values": [1],
+                  "transform": [
+                    {"type": "filter", "expr": "Regression_&show_scatter_graph"}
+                  ]
+                },
+                {
+                  "name": "run_contours",
+                  "values": [1],
+                  "transform": [
+                    {"type": "filter", "expr": "Contours_&show_scatter_graph"}
+                  ]
+                }
+              ],
+              "marks": [
+                {
+                  "type": "group",
+                  "name": "histogram_graph",
+                  "clip": false,
+                  "interactive": true,
+                  "scales": [],
+                  "encode": {
+                    "update": {
+                      "strokeOpacity": {"value": 0},
+                      "width": {"signal": "Plot_Width"},
+                      "y": {"signal": "0"},
+                      "x": {"scale": "x_cont_scale", "signal": "xdom[1]"},
+                      "height": {"signal": "hist_graph_height"}
+                    }
+                  },
+                  "marks": [
+                    {
+                      "type": "rect",
+                      "name": "histo",
+                      "from": {"data": "histstackmarks_data"},
+                      "interactive": true,
+                      "encode": {
+                        "update": {
+                          "y": {"scale": "hist_graph_scale", "field": "y0"},
+                          "y2": {"scale": "hist_graph_scale", "field": "y1"},
+                          "x": {"scale": "x_cont_scale", "field": "bin0"},
+                          "x2": {"scale": "x_cont_scale", "field": "bin1"},
+                          "stroke": {"value": "aliceblue"},
+                          "strokeWidth": {"signal": "if(Cord,0.5,0)"},
+                          "fillOpacity": {"signal": "0.7"},
+                          "tooltip": {
+                            "signal": "{'count':datum.count,'from':format(datum['bin0'],'0.2f'),'to':format(datum['bin1'],'0.2f'),'Sub-group': ''+datum['My_C_Value']}"
+                          },
+                          "fill": [
+                            {
+                              "test": "Cord",
+                              "scale": "color_scale_cat",
+                              "field": "My_C_Value"
+                            },
+                            {"scale": "color_scale_cont", "field": "My_C_Value"}
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "name": "scatter_chart",
+                  "style": "cell",
+                  "interactive": true,
+                  "scales": [],
+                  "data": [],
+                  "encode": {
+                    "update": {
+                      "width": {"signal": "Plot_Width"},
+                      "y": {"signal": "hist_graph_height"},
+                      "height": {"signal": "scatter_graph_height"}
+                    }
+                  },
+                  "axes": [
+                    {
+                      "scale": "y_cont_scale2",
+                      "domain": false,
+                      "grid": true,
+                      "tickCount": {"signal": "Ticks"},
+                      "orient": "left",
+                      "ticks": false,
+                      "gridScale": "x_cont_scale",
+                      "encode": {
+                        "grid": {
+                          "update": {
+                            "strokeOpacity": {"signal": "if(Grids_,1,0)"}
+                          }
+                        }
+                      },
+                      "labels": false
+                    },
+                    {
+                      "scale": "x_cont_scale",
+                      "domain": false,
+                      "grid": true,
+                      "tickCount": {"signal": "Ticks"},
+                      "orient": "bottom",
+                      "gridScale": "y_cont_scale2",
+                      "ticks": false,
+                      "encode": {
+                        "grid": {
+                          "update": {
+                            "strokeOpacity": {"signal": "if(Grids_,1,0)"}
+                          }
+                        }
+                      },
+                      "labels": false
+                    }
+                  ],
+                  "marks": [
+                    {
+                      "name": "mark1s",
+                      "type": "symbol",
+                      "interactive": true,
+                      "clip": true,
+                      "from": {"data": "scatter_data"},
+                      "encode": {
+                        "update": {
+                          "x": [
+                            {"scale": "x_cont_scale", "field": "My_X_Value"}
+                          ],
+                          "y": [
+                            {"scale": "y_cont_scale2", "field": "My_Y_Value"}
+                          ],
+                          "shape": {"signal": "Shape"},
+                          "size": {
+                            "field": "My_S_Value",
+                            "scale": "size_scale"
+                          },
+                          "opacity": {"signal": "Opacity_"},
+                          "tooltip": {"signal": "datum"},
+                          "fill": [
+                            {"test": "!Points_", "value": "transparent"},
+                            {
+                              "test": "Cord",
+                              "scale": "color_scale_cat",
+                              "field": "My_C_Value"
+                            },
+                            {"scale": "color_scale_cont", "field": "My_C_Value"}
+                          ],
+                          "strokeWidth": {"signal": "1"}
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "name": "correlation",
+                  "style": "cell",
+                  "from": {"data": "run_correl"},
+                  "interactive": true,
+                  "scales": [],
+                  "data": [],
+                  "encode": {
+                    "update": {
+                      "width": {"signal": "Plot_Width"},
+                      "y": {"signal": "hist_graph_height"},
+                      "height": {"signal": "scatter_graph_height"}
+                    }
+                  },
+                  "marks": [
+                    {
+                      "type": "rule",
+                      "name": "regression",
+                      "clip": true,
+                      "from": {"data": "correl_data"},
+                      "encode": {
+                        "update": {
+                          "x": {
+                            "scale": "x_cont_scale",
+                            "signal": "X_maxmin_num[0]"
+                          },
+                          "x2": {
+                            "scale": "x_cont_scale",
+                            "signal": "X_maxmin_num[1]"
+                          },
+                          "y": {
+                            "scale": "y_cont_scale2",
+                            "signal": "X_maxmin_num[0]*datum.coef[1]+datum.coef[0]"
+                          },
+                          "y2": {
+                            "scale": "y_cont_scale2",
+                            "signal": "X_maxmin_num[1]*datum.coef[1]+datum.coef[0]"
+                          },
+                          "interpolate": {"value": "linear"},
+                          "tooltip": {
+                            "signal": "{'r2':format(datum['rSquared'],'.2f'),'m':format(datum['coef'][1],'.2f')}"
+                          },
+                          "stroke": {
+                            "signal": "datum.keys",
+                            "scale": "color_scale_cat"
+                          },
+                          "strokeWidth": {"signal": "2"}
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "name": "contour_chart",
+                  "style": "cell",
+                  "from": {"data": "run_contours"},
+                  "interactive": true,
+                  "encode": {
+                    "update": {
+                      "width": {"signal": "Plot_Width"},
+                      "y": {"signal": "hist_graph_height"},
+                      "height": {"signal": "scatter_graph_height"}
+                    }
+                  },
+                  "scales": [
+                    {
+                      "name": "colorscale_contour",
+                      "type": "ordinal",
+                      "domain": {
+                        "data": "contour_facet_data",
+                        "field": "My_C_Value"
+                      },
+                      "range": {"scheme": {"signal": "Palette"}},
+                      "reverse": {"signal": "Invert_Colors"}
+                    }
+                  ],
+                  "data": [
+                    {
+                      "name": "contour_facet_data",
+                      "source": "facet_data",
+                      "transform": [
+                        {
+                          "type": "filter",
+                          "expr": "Contours_&show_scatter_graph"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "density",
+                      "source": "contour_facet_data",
+                      "transform": [
+                        {
+                          "type": "filter",
+                          "expr": "Contours_&show_scatter_graph"
+                        },
+                        {
+                          "type": "kde2d",
+                          "groupby": [
+                            {
+                              "signal": "if(colors_count<10 & Contours_,'My_C_Value','None')"
+                            }
+                          ],
+                          "size": [
+                            {"signal": "Plot_Width"},
+                            {"signal": "scatter_graph_height"}
+                          ],
+                          "x": {
+                            "expr": "scale('x_cont_scale', datum.My_X_Value)"
+                          },
+                          "y": {
+                            "expr": "scale('y_cont_scale2', datum.My_Y_Value)"
+                          },
+                          "bandwidth": {"signal": "[bandwidth, bandwidth]"},
+                          "counts": {"signal": "counts"}
+                        }
+                      ]
+                    },
+                    {
+                      "name": "contours_data",
+                      "source": "density",
+                      "transform": [
+                        {
+                          "type": "filter",
+                          "expr": "Contours_&show_scatter_graph"
+                        },
+                        {
+                          "type": "isocontour",
+                          "field": "grid",
+                          "resolve": {"signal": "resolve"},
+                          "levels": 3
+                        },
+                        {"type": "filter", "expr": "isValid(datum.My_C_Value)"}
+                      ]
+                    }
+                  ],
+                  "marks": [
+                    {
+                      "type": "image",
+                      "from": {"data": "density"},
+                      "clip": true,
+                      "encode": {
+                        "update": {
+                          "x": {"signal": "0"},
+                          "y": {"signal": "0"},
+                          "width": {
+                            "signal": "if(Contours_ & show_scatter_graph,Plot_Width,0)"
+                          },
+                          "height": {
+                            "signal": "if(Contours_ & show_scatter_graph,scatter_graph_height,0)"
+                          },
+                          "opacity": {"signal": "if(Contours_,1,0)"},
+                          "aspect": {"value": false}
+                        }
+                      },
+                      "transform": [
+                        {
+                          "type": "heatmap",
+                          "field": "datum.grid",
+                          "resolve": {"signal": "resolve"},
+                          "color": {
+                            "expr": "if(Contours_ & show_scatter_graph,scale('colorscale_contour', datum.datum.My_C_Value),'')"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "path",
+                      "clip": true,
+                      "from": {"data": "contours_data"},
+                      "encode": {
+                        "enter": {
+                          "strokeWidth": {"value": 1},
+                          "strokeOpacity": {"value": 1},
+                          "stroke": {
+                            "scale": "color_scale_cat",
+                            "field": "My_C_Value"
+                          }
+                        }
+                      },
+                      "transform": [
+                        {"type": "geopath", "field": "datum.contour"}
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "interactive": true,
+      "name": "multi_sgrid",
+      "from": {"data": "graph_stackplots"},
+      "marks": [
+        {
+          "type": "group",
+          "name": "stack_graphs",
+          "encode": {
+            "update": {
+              "height": {
+                "signal": "height-Title_Height-Xaxis_Height-Legend_Height"
+              },
+              "x": {"signal": "margin_hz"},
+              "width": {"signal": "width-margin_hz*2"},
+              "y": {"signal": "Title_Height"}
+            }
+          },
+          "data": [
+            {
+              "name": "row_instance",
+              "source": "rows_domain",
+              "transform": [{"type": "filter", "expr": "show_stacked_graphs"}]
+            },
+            {
+              "name": "col_instance",
+              "source": "cols_domain",
+              "transform": [{"type": "filter", "expr": "show_stacked_graphs"}]
+            },
+            {
+              "name": "stacked_data",
+              "source": "tdata",
+              "transform": [
+                {"type": "filter", "expr": "!fail"},
+                {
+                  "type": "filter",
+                  "expr": "if(Filter_By_Value!='None',if(datum[Filter_By_Value]>=toNumber(filter_min)&datum[Filter_By_Value]<=toNumber(filter_max),true,false),true)"
+                },
+                {"type": "filter", "expr": "show_stacked_graphs"},
+                {
+                  "type": "collect",
+                  "sort": {"field": ["My_M2_Value", "My_M_Value", "My_C_Value"]}
+                }
+              ]
+            },
+            {
+              "name": "binned_stacked_data",
+              "source": "stacked_data",
+              "transform": [
+                {
+                  "type": "aggregate",
+                  "groupby": [
+                    "My_X_Value",
+                    "My_C_Value",
+                    "My_M_Value",
+                    "My_M2_Value"
+                  ],
+                  "ops": ["sum"],
+                  "fields": ["mycount"],
+                  "as": ["sum_yield"]
+                },
+                {
+                  "type": "stack",
+                  "groupby": ["My_X_Value", "My_M_Value", "My_M2_Value"],
+                  "field": "sum_yield",
+                  "sort": {"field": ["sum_yield"], "order": ["descending"]},
+                  "as": ["sum_yield_start", "sum_yield_end"],
+                  "offset": "zero"
+                }
+              ]
+            },
+            {
+              "name": "faceted_stacked_domain",
+              "source": "stacked_data",
+              "transform": [{"type": "aggregate", "groupby": ["My_M_Value"]}]
+            },
+            {
+              "name": "binned_stacked_domain",
+              "source": "stacked_data",
+              "transform": [{"type": "aggregate", "groupby": ["My_X_Value"]}]
+            }
+          ],
+          "scales": [
+            {
+              "name": "stacked_scale",
+              "type": "linear",
+              "domain": {
+                "data": "binned_stacked_data",
+                "fields": ["sum_yield_start", "sum_yield_end"]
+              },
+              "range": [
+                {"signal": "if(show_stacked_graphs,Plot_Height,0)"},
+                {"signal": "0"}
+              ],
+              "nice": true,
+              "zero": true
+            },
+            {
+              "name": "binned_scale",
+              "type": "band",
+              "domain": {
+                "data": "binned_stacked_data",
+                "field": "My_X_Value",
+                "sort": true
+              },
+              "range": [{"signal": "0"}, {"signal": "Plot_Width"}],
+              "paddingInner": 0.1,
+              "reverse": false,
+              "paddingOuter": 0.05
+            }
+          ],
+          "marks": [
+            {
+              "name": "row_header",
+              "type": "group",
+              "from": {"data": "row_instance"},
+              "encode": {
+                "update": {
+                  "height": {"signal": "Plot_Height"},
+                  "width": {"signal": "RowTitle_Width"},
+                  "y": {"field": "data", "scale": "row_scale"},
+                  "x": {"signal": "RowTitle_Width-5"}
+                }
+              },
+              "title": {
+                "text": {"signal": "if(Facet_Rows_By=='None',Y_Axis,'')"},
+                "orient": "left"
+              },
+              "axes": [
+                {
+                  "scale": "stacked_scale",
+                  "gridScale": "binned_scale",
+                  "domain": true,
+                  "title": "title",
+                  "offset": {"signal": "0"},
+                  "tickCount": 3,
+                  "zindex": 0,
+                  "encode": {
+                    "title": {
+                      "update": {
+                        "text": {
+                          "signal": "if(parent.data=='None','',parent.data)"
+                        },
+                        "align": {"value": "left"}
+                      }
+                    }
+                  },
+                  "orient": "left",
+                  "labels": true
+                }
+              ]
+            },
+            {
+              "name": "col_footer",
+              "type": "group",
+              "from": {"data": "col_instance"},
+              "encode": {
+                "update": {
+                  "width": {"signal": "Plot_Width"},
+                  "height": {"signal": "Xaxis_Height"},
+                  "x": {"signal": "datum.data", "scale": "col_scale"},
+                  "y": {
+                    "signal": "row_ht*rows_count-Plot_Padding+4+PlotTitle_Height"
+                  }
+                }
+              },
+              "axes": [
+                {
+                  "scale": "binned_scale",
+                  "gridScale": "stacked_scale",
+                  "domain": true,
+                  "zindex": 0,
+                  "tickCount": 3,
+                  "title": "title",
+                  "offset": {"signal": "-Xaxis_Height"},
+                  "encode": {
+                    "title": {
+                      "update": {
+                        "text": {
+                          "signal": "if(parent.data=='None','',parent.data)"
+                        },
+                        "align": {"value": "center"}
+                      }
+                    },
+                    "grid": {
+                      "update": {"strokeOpacity": {"signal": "if(Grids_,1,0)"}}
+                    }
+                  },
+                  "orient": "bottom",
+                  "labels": true
+                }
+              ]
+            },
+            {
+              "name": "stacked_chart",
+              "type": "group",
+              "clip": true,
+              "from": {
+                "facet": {
+                  "data": "binned_stacked_data",
+                  "name": "mystackfacet",
+                  "groupby": ["My_M_Value", "My_M2_Value"]
+                }
+              },
+              "encode": {
+                "update": {
+                  "width": {"signal": "Plot_Width"},
+                  "x": {"signal": "datum.My_M_Value", "scale": "col_scale"},
+                  "y": {"signal": "datum.My_M2_Value", "scale": "row_scale"},
+                  "height": {"signal": "Plot_Height"},
+                  "fill": {"value": "#EEE"},
+                  "fillOpacity": {"value": 0.1},
+                  "stroke": {"value": "#ccc"},
+                  "strokeWidth": {"value": 0.5}
+                }
+              },
+              "scales": [],
+              "marks": [
+                {
+                  "name": "child_marks",
+                  "interactive": true,
+                  "clip": true,
+                  "type": "rect",
+                  "style": "cell",
+                  "from": {"data": "mystackfacet"},
+                  "encode": {
+                    "update": {
+                      "fill": [
+                        {
+                          "test": "datum[\"sum_yield\"] === null || isNaN(datum[\"sum_yield\"])",
+                          "value": null
+                        },
+                        {"scale": "color_scale_cat", "field": "My_C_Value"}
+                      ],
+                      "opacity": {"value": 0.7},
+                      "tooltip": {
+                        "signal": "{'Number': format(datum['sum_yield'], ''), Group: ''+datum['My_X_Value'], 'Sub-group': ''+datum['My_C_Value']}"
+                      },
+                      "strokeWidth": {"value": 0.4},
+                      "y2": {
+                        "scale": "stacked_scale",
+                        "field": "sum_yield_end"
+                      },
+                      "y": {
+                        "scale": "stacked_scale",
+                        "field": "sum_yield_start"
+                      },
+                      "x": {"scale": "binned_scale", "field": "My_X_Value"},
+                      "width": {"scale": "binned_scale", "band": true}
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "interactive": true,
+      "name": "box_graphs",
+      "from": {"data": "graph_boxplots"},
+      "marks": [
+        {
+          "name": "box_graph_charting",
+          "type": "group",
+          "interactive": true,
+          "encode": {
+            "update": {
+              "height": {
+                "signal": "height-Title_Height-Xaxis_Height-Legend_Height"
+              },
+              "x": {"signal": "margin_hz"},
+              "width": {"signal": "width-margin_hz*2"},
+              "y": {"signal": "Title_Height"}
+            }
+          },
+          "data": [
+            {
+              "name": "row_instance",
+              "source": "rows_domain",
+              "transform": [{"type": "filter", "expr": "show_box_graphs"}]
+            },
+            {
+              "name": "col_instance",
+              "source": "cols_domain",
+              "transform": [{"type": "filter", "expr": "show_box_graphs"}]
+            },
+            {
+              "name": "boxplots_data",
+              "source": "tdata",
+              "transform": [
+                {"type": "filter", "expr": "!fail"},
+                {"type": "filter", "expr": "show_box_graphs"},
+                {
+                  "type": "formula",
+                  "as": "My_Y_Value",
+                  "expr": "if(!Yord && Y_Axis!='None',if(LogY_,log(toNumber(datum[Y_Axis])),toNumber(datum[Y_Axis])),null)"
+                },
+                {
+                  "type": "filter",
+                  "expr": "if(Filter_By_Value!='None',if(datum[Filter_By_Value]>=toNumber(filter_min)&datum[Filter_By_Value]<=toNumber(filter_max),true,false),true)"
+                }
+              ]
+            },
+            {
+              "name": "boxplots_instance",
+              "source": "boxplots_data",
+              "transform": [{"type": "filter", "expr": "show_box_graphs"}]
+            },
+            {
+              "name": "run_jitter",
+              "values": [1],
+              "transform": [{"type": "filter", "expr": "Jitter_"}]
+            },
+            {
+              "name": "run_wojitter",
+              "values": [1],
+              "transform": [{"type": "filter", "expr": "!Jitter_ & Dashes_"}]
+            }
+          ],
+          "signals": [
+            {"name": "steps", "value": 30},
+            {
+              "name": "cols_count",
+              "push": "outer",
+              "on": [
+                {
+                  "events": {"signal": "length(data('cols_domain'))"},
+                  "update": "length(data('cols_domain'))"
+                }
+              ]
+            },
+            {"name": "yrange", "update": "[Plot_Height, 0]"},
+            {
+              "name": "ycur",
+              "value": null,
+              "on": [
+                {
+                  "events": "mousedown, touchstart, touchend",
+                  "update": "Interactive_ ? slice(ydom) : ycur"
+                }
+              ]
+            },
+            {
+              "name": "delta",
+              "value": [0, 0],
+              "on": [
+                {
+                  "events": [
+                    {
+                      "source": "scope",
+                      "type": "mousemove",
+                      "consume": true,
+                      "between": [
+                        {"type": "mousedown"},
+                        {"source": "scope", "type": "mouseup"}
+                      ]
+                    },
+                    {
+                      "type": "touchmove",
+                      "consume": true,
+                      "filter": "event.touches.length === 1"
+                    }
+                  ],
+                  "update": "Interactive_ & down ? [down[0]-x(), y()-down[1]] : [0,0]"
+                }
+              ]
+            },
+            {
+              "name": "anchor",
+              "value": [0, 0],
+              "on": [
+                {
+                  "events": "wheel",
+                  "update": "Interactive_ ? [anchor[0], invert('y_cont_scale', y())] : [0, 0]"
+                },
+                {
+                  "events": {
+                    "type": "touchstart",
+                    "filter": "event.touches.length===2"
+                  },
+                  "update": "Interactive_ ? [anchor[0], (ydom[0] + ydom[1]) / 2] : [0, 0]"
+                }
+              ]
+            },
+            {
+              "name": "zoom",
+              "value": 1,
+              "on": [
+                {
+                  "events": "wheel!",
+                  "force": true,
+                  "update": "Interactive_ ? pow(1.001, event.deltaY * pow(16, event.deltaMode)) : 1"
+                },
+                {
+                  "events": {"signal": "dist2"},
+                  "force": true,
+                  "update": "dist1 / dist2"
+                }
+              ]
+            },
+            {
+              "name": "dist1",
+              "value": 0,
+              "on": [
+                {
+                  "events": {
+                    "type": "touchstart",
+                    "filter": "event.touches.length===2"
+                  },
+                  "update": "Interactive_ ? pinchDistance(event) : 0"
+                },
+                {"events": {"signal": "dist2"}, "update": "dist2"}
+              ]
+            },
+            {
+              "name": "dist2",
+              "value": 0,
+              "on": [
+                {
+                  "events": {
+                    "type": "touchmove",
+                    "consume": true,
+                    "filter": "event.touches.length===2"
+                  },
+                  "update": "Interactive_ ? pinchDistance(event) : 0"
+                }
+              ]
+            },
+            {
+              "name": "ydom",
+              "update": "slice(Y_maxmin_num)",
+              "react": true,
+              "on": [
+                {
+                  "events": {"signal": "delta"},
+                  "update": "[ycur[0] + span(ycur) * delta[1] / Plot_Height, ycur[1] + span(ycur) * delta[1] / Plot_Height]"
+                },
+                {
+                  "events": {"signal": "zoom"},
+                  "update": "[anchor[1] + (ydom[0] - anchor[1]) * zoom, anchor[1] + (ydom[1] - anchor[1]) * zoom]"
+                }
+              ]
+            },
+            {
+              "name": "down",
+              "value": null,
+              "on": [
+                {"events": "touchend", "update": "down"},
+                {
+                  "events": "mousedown, touchstart",
+                  "update": "Interactive_ ? xy() : down"
+                }
+              ]
+            },
+            {
+              "name": "yd",
+              "push": "outer",
+              "on": [{"events": {"signal": "ydom"}, "update": "ydom"}]
+            }
+          ],
+          "scales": [
+            {
+              "name": "y_cont_scale",
+              "reverse": {"signal": "Reverse_Y"},
+              "type": "linear",
+              "round": true,
+              "domain": {"signal": "ydom"},
+              "zero": false,
+              "range": [0, {"signal": "if(show_box_graphs,Plot_Height,0)"}]
+            },
+            {
+              "name": "bin_band_scale",
+              "type": "band",
+              "domain": {
+                "data": "xcat_domain",
+                "field": "My_X_Value",
+                "sort": true
+              },
+              "range": [0, {"signal": "Plot_Width"}]
+            },
+            {
+              "name": "group_scale_violin",
+              "type": "ordinal",
+              "reverse": {"signal": "Reverse_X"},
+              "range": {"scheme": {"signal": "Palette"}},
+              "domain": {"data": "boxplots_data", "field": "My_X_Value"}
+            }
+          ],
+          "marks": [
+            {
+              "name": "row_header",
+              "type": "group",
+              "from": {"data": "row_instance"},
+              "encode": {
+                "update": {
+                  "height": {"signal": "Plot_Height"},
+                  "width": {"value": 0},
+                  "y": {"field": "data", "scale": "row_scale"},
+                  "x": {"signal": "RowTitle_Width"}
+                }
+              },
+              "title": {
+                "text": {"signal": "if(Facet_Rows_By=='None',Y_Axis,'')"},
+                "orient": "left"
+              },
+              "axes": [
+                {
+                  "scale": "y_cont_scale",
+                  "gridScale": "bin_band_scale",
+                  "domain": true,
+                  "title": "title",
+                  "offset": {"signal": "0"},
+                  "tickCount": 3,
+                  "zindex": 0,
+                  "encode": {
+                    "title": {
+                      "update": {
+                        "text": {
+                          "signal": "if(parent.data=='None','',parent.data)"
+                        },
+                        "align": {"value": "left"}
+                      }
+                    }
+                  },
+                  "orient": "left",
+                  "labels": true
+                }
+              ]
+            },
+            {
+              "name": "col_footer",
+              "type": "group",
+              "from": {"data": "col_instance"},
+              "encode": {
+                "update": {
+                  "width": {"signal": "Plot_Width"},
+                  "height": {"signal": "Xaxis_Height"},
+                  "x": {"signal": "datum.data", "scale": "col_scale"},
+                  "y": {
+                    "signal": "row_ht*rows_count-Plot_Padding+4+PlotTitle_Height"
+                  }
+                }
+              },
+              "axes": [
+                {
+                  "scale": "bin_band_scale",
+                  "gridScale": "y_cont_scale",
+                  "domain": true,
+                  "zindex": 0,
+                  "title": "title",
+                  "labelAngle": -90,
+                  "labelBaseline": "bottom",
+                  "labelAlign": "right",
+                  "labelLimit": {"signal": "Xaxis_Height-20"},
+                  "offset": {"signal": "-Xaxis_Height"},
+                  "encode": {
+                    "title": {
+                      "update": {
+                        "text": {
+                          "signal": "if(parent.data=='None','',parent.data)"
+                        },
+                        "align": {"value": "center"}
+                      }
+                    }
+                  },
+                  "orient": "bottom",
+                  "labels": true
+                }
+              ]
+            },
+            {
+              "name": "_chart",
+              "style": "cell",
+              "interactive": true,
+              "type": "group",
+              "from": {
+                "facet": {
+                  "data": "boxplots_instance",
+                  "name": "multigraph_facets",
+                  "groupby": ["My_M_Value", "My_M2_Value"]
+                }
+              },
+              "encode": {
+                "update": {
+                  "width": {"signal": "Plot_Width"},
+                  "fill": {"value": "#EEE"},
+                  "fillOpacity": {"value": 0.1},
+                  "x": {"signal": "datum.My_M_Value", "scale": "col_scale"},
+                  "y": {"signal": "datum.My_M2_Value", "scale": "row_scale"},
+                  "height": {"signal": "Plot_Height"}
+                }
+              },
+              "axes": [
+                {
+                  "scale": "bin_band_scale",
+                  "gridScale": "y_cont_scale",
+                  "domain": false,
+                  "zindex": 0,
+                  "labels": false,
+                  "grid": true,
+                  "encode": {
+                    "grid": {
+                      "update": {"strokeOpacity": {"signal": "if(Grids_,1,0)"}}
+                    }
+                  },
+                  "orient": "bottom"
+                },
+                {
+                  "scale": "y_cont_scale",
+                  "gridScale": "bin_band_scale",
+                  "grid": true,
+                  "domain": false,
+                  "tickCount": 3,
+                  "zindex": 0,
+                  "encode": {
+                    "grid": {
+                      "update": {"strokeOpacity": {"signal": "if(Grids_,1,0)"}}
+                    }
+                  },
+                  "orient": "left",
+                  "labels": false
+                }
+              ],
+              "marks": [
+                {
+                  "type": "group",
+                  "clip": true,
+                  "name": "mygraphs",
+                  "interactive": true,
+                  "from": {
+                    "facet": {
+                      "data": "multigraph_facets",
+                      "name": "category_data",
+                      "groupby": ["My_X_Value"]
+                    }
+                  },
+                  "sort": {"field": ["datum.My_X_Value"]},
+                  "encode": {
+                    "update": {
+                      "xc": {
+                        "scale": "bin_band_scale",
+                        "field": "My_X_Value",
+                        "band": 0.5
+                      },
+                      "width": {"signal": "violin_width"},
+                      "height": {"signal": "Plot_Height"}
+                    }
+                  },
+                  "data": [
+                    {
+                      "name": "clean_cat",
+                      "source": "category_data",
+                      "transform": [
+                        {
+                          "type": "filter",
+                          "expr": "!isNaN(datum['My_Y_Value'])"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "density_data",
+                      "transform": [
+                        {
+                          "type": "density",
+                          "steps": {"signal": "steps"},
+                          "distribution": {
+                            "function": "kde",
+                            "from": "clean_cat",
+                            "field": "My_Y_Value",
+                            "bandwidth": 0
+                          }
+                        },
+                        {
+                          "type": "stack",
+                          "groupby": ["value"],
+                          "field": "density",
+                          "offset": "center",
+                          "as": ["x0", "x2"]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "category_summary_data",
+                      "source": "category_data",
+                      "transform": [
+                        {
+                          "type": "aggregate",
+                          "drop": true,
+                          "fields": [
+                            "My_Y_Value",
+                            "My_Y_Value",
+                            "My_Y_Value",
+                            "My_Y_Value",
+                            "My_Y_Value",
+                            "My_Y_Value",
+                            "My_Y_Value",
+                            "My_Y_Value",
+                            "My_Y_Value",
+                            "My_Y_Value",
+                            "My_M_Value"
+                          ],
+                          "ops": [
+                            "min",
+                            "q1",
+                            "median",
+                            "q3",
+                            "max",
+                            "count",
+                            "mean",
+                            "stdev",
+                            "stderr",
+                            "variancep",
+                            "max"
+                          ],
+                          "as": [
+                            "min",
+                            "q1",
+                            "median",
+                            "q3",
+                            "max",
+                            "count",
+                            "mean",
+                            "stdev",
+                            "stderr",
+                            "varp",
+                            "My_M_Value"
+                          ]
+                        },
+                        {"type": "filter", "expr": "datum['median'] != null"},
+                        {"type": "filter", "expr": "datum['count'] > 5"}
+                      ]
+                    }
+                  ],
+                  "scales": [
+                    {
+                      "name": "width_density_scale",
+                      "type": "linear",
+                      "range": [0, {"signal": "violin_width"}],
+                      "domain": {"data": "density_data", "field": "x2"}
+                    }
+                  ],
+                  "marks": [
+                    {
+                      "type": "area",
+                      "name": "Violin_marks",
+                      "interactive": true,
+                      "from": {"data": "density_data"},
+                      "encode": {
+                        "update": {
+                          "fill": {
+                            "scale": "group_scale_violin",
+                            "field": {"parent": "My_X_Value"}
+                          },
+                          "x": {"scale": "width_density_scale", "field": "x0"},
+                          "x2": {"scale": "width_density_scale", "field": "x2"},
+                          "interpolate": {"value": "natural"},
+                          "y": {"scale": "y_cont_scale", "field": "value"},
+                          "opacity": [
+                            {"test": "Violin_", "value": 0.3},
+                            {"value": 0}
+                          ],
+                          "orient": {"value": "horizontal"}
+                        }
+                      }
+                    },
+                    {
+                      "type": "rect",
+                      "interactive": true,
+                      "from": {"data": "category_summary_data"},
+                      "encode": {
+                        "update": {
+                          "fill": {
+                            "field": {"parent": "My_X_Value"},
+                            "scale": "group_scale_violin"
+                          },
+                          "width": {"signal": "violin_width / 12"},
+                          "xc": {"signal": "violin_width / 2"},
+                          "opacity": [
+                            {"test": "Boxplot_", "value": 1},
+                            {"value": 0}
+                          ],
+                          "cornerRadius": {"value": 3},
+                          "tooltip": {
+                            "signal": "{'Group':datum['My_X_Value'],'Median': format(datum['median'],''),'Max': format(datum['max'],''),'Min': format(datum['min'],''),'Stdev': format(datum['stdev'],'0.2f'),'Mean': format(datum['mean'],'.2f'),'Count:':datum['Count'],'varp':format(datum['varp'],'.2f')}"
+                          },
+                          "y": {
+                            "scale": "y_cont_scale",
+                            "signal": "min(datum.max,datum['q3']+1.5*(datum['q3']-datum['q1']))"
+                          },
+                          "y2": {
+                            "scale": "y_cont_scale",
+                            "signal": "max(datum.min,datum['q1']-1.5*(datum['q3']-datum['q1']))"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "type": "rect",
+                      "name": "quartileboxes",
+                      "interactive": true,
+                      "from": {"data": "category_summary_data"},
+                      "encode": {
+                        "update": {
+                          "fill": {
+                            "field": {"parent": "My_X_Value"},
+                            "scale": "group_scale_violin"
+                          },
+                          "tooltip": {
+                            "signal": "{'Group':datum['My_X_Value'],'Median': format(datum['median'],''),'Max': format(datum['max'],''),'Min': format(datum['min'],''),'Stdev': format(datum['stdev'],'0.2f'),'Mean': format(datum['mean'],'.2f'),'Count:':datum.count}"
+                          },
+                          "cornerRadius": {"value": 3},
+                          "opacity": [
+                            {"test": "Boxplot_", "value": 1},
+                            {"value": 0}
+                          ],
+                          "xc": {"signal": "violin_width / 2"},
+                          "width": {"signal": "violin_width / 2"},
+                          "y": {"scale": "y_cont_scale", "field": "q1"},
+                          "y2": {"scale": "y_cont_scale", "field": "q3"}
+                        }
+                      }
+                    },
+                    {
+                      "type": "group",
+                      "name": "dashes_",
+                      "interactive": true,
+                      "from": {"data": "run_wojitter"},
+                      "marks": [
+                        {
+                          "type": "rect",
+                          "name": "mysymbols",
+                          "interactive": true,
+                          "from": {"data": "category_data"},
+                          "encode": {
+                            "update": {
+                              "x": {"signal": "violin_width*0.35"},
+                              "y": {
+                                "scale": "y_cont_scale",
+                                "field": "My_Y_Value"
+                              },
+                              "fill": [
+                                {
+                                  "test": "Dashes_",
+                                  "scale": "color_scale_cat",
+                                  "field": "My_C_Value"
+                                },
+                                {
+                                  "field": "My_C_Value",
+                                  "scale": "color_scale_cont"
+                                }
+                              ],
+                              "stroke": [
+                                {
+                                  "test": "Dashes_",
+                                  "scale": "color_scale_cat",
+                                  "field": "My_C_Value"
+                                },
+                                {
+                                  "field": "My_C_Value",
+                                  "scale": "color_scale_cont"
+                                }
+                              ],
+                              "width": {"signal": "violin_width*0.3"},
+                              "tooltip": {
+                                "signal": "{'Group':format(datum['My_X_Value'],'0.2f'),'Value':format(datum['My_Y_Value'],'0.2f')}"
+                              },
+                              "strokeOpacity": [
+                                {"test": "Dashes_", "signal": "Marker_Opacity"},
+                                {"value": 0}
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "group",
+                      "name": "jitter_dashes",
+                      "interactive": true,
+                      "data": [
+                        {
+                          "name": "category_data_filtered",
+                          "source": "category_data",
+                          "transform": [
+                            {"type": "filter", "expr": "Dashes_&Jitter_"}
+                          ]
+                        }
+                      ],
+                      "from": {"data": "run_jitter"},
+                      "marks": [
+                        {
+                          "type": "symbol",
+                          "name": "mysymbols",
+                          "interactive": true,
+                          "from": {"data": "category_data_filtered"},
+                          "transform": [
+                            {
+                              "type": "force",
+                              "iterations": 70,
+                              "restart": false,
+                              "static": {"signal": "true"},
+                              "forces": [
+                                {
+                                  "force": "collide",
+                                  "iterations": {"signal": "1"},
+                                  "radius": {"signal": "1"}
+                                },
+                                {
+                                  "force": "x",
+                                  "x": "xfocus",
+                                  "strength": {"signal": "1"}
+                                },
+                                {
+                                  "force": "y",
+                                  "y": "yfocus",
+                                  "strength": {"signal": "1"}
+                                }
+                              ]
+                            }
+                          ],
+                          "encode": {
+                            "update": {
+                              "xfocus": {"signal": "violin_width*0.5"},
+                              "yfocus": {
+                                "scale": "y_cont_scale",
+                                "field": "My_Y_Value"
+                              },
+                              "fill": [
+                                {
+                                  "test": "Dashes_ & Cord",
+                                  "scale": "color_scale_cat",
+                                  "field": "My_C_Value"
+                                },
+                                {
+                                  "field": "My_C_Value",
+                                  "scale": "color_scale_cont"
+                                }
+                              ],
+                              "size": {"signal": "Feature_Size"},
+                              "stroke": {"value": "transparent"},
+                              "width": {"signal": "violin_width*0.3"},
+                              "shape": {"signal": "Shape"},
+                              "tooltip": {
+                                "signal": "{'Group':format(datum['My_X_Value'],'0.2f'),'Value':format(datum['My_Y_Value'],'0.2f')}"
+                              },
+                              "opacity": [
+                                {"test": "Dashes_", "signal": "Opacity_"},
+                                {"value": 0}
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "rect",
+                      "name": "medianLine",
+                      "interactive": true,
+                      "from": {"data": "category_summary_data"},
+                      "encode": {
+                        "update": {
+                          "opacity": [
+                            {"test": "Boxplot_", "value": 1},
+                            {"value": 0}
+                          ],
+                          "fill": {"value": "aliceblue"},
+                          "tooltip": {
+                            "signal": "{'Group':datum['My_X_Value'],'Median': format(datum['median'],''),'Max': format(datum['max'],''),'Min': format(datum['min'],''),'Stdev': format(datum['stdev'],'0.2f'),'Mean': format(datum['mean'],'.2f'),'Count:':datum.count}"
+                          },
+                          "xc": {"signal": "violin_width / 2"},
+                          "width": {"signal": "violin_width / 2"},
+                          "height": {"value": 2},
+                          "y": {"scale": "y_cont_scale", "field": "median"}
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "name": "count",
+                      "interactive": true,
+                      "from": {"data": "category_summary_data"},
+                      "encode": {
+                        "update": {
+                          "text": {
+                            "signal": "if(Stats_,' n='+datum.count+'  u='+format(datum['mean'],'.2f')+'  s='+format(datum['varp'],'.3f'),'')"
+                          },
+                          "angle": {"value": -90},
+                          "xc": {"signal": "violin_width/4"},
+                          "y": {"scale": "y_cont_scale", "signal": "ydom[0]"},
+                          "tooltip": {
+                            "signal": "{'Group':datum['My_X_Value'],'Median': format(datum['median'],''),'Max': format(datum['max'],''),'Min': format(datum['min'],''),'Stdev': format(datum['varp'],'0.2f'),'Mean': format(datum['mean'],'.2f'),'Count:':datum.count}"
+                          },
+                          "opacity": {"value": 0.5}
+                        }
+                      }
+                    },
+                    {
+                      "type": "group",
+                      "name": "inset",
+                      "interactive": true,
+                      "data": [
+                        {
+                          "name": "MyOutliers_",
+                          "source": "category_data",
+                          "transform": [
+                            {
+                              "type": "lookup",
+                              "from": "category_summary_data",
+                              "key": "My_X_Value",
+                              "fields": ["value"],
+                              "as": ["value"],
+                              "default": true
+                            },
+                            {
+                              "type": "filter",
+                              "expr": "datum['My_Y_Value'] >= (datum.value.q3-datum.value.q1)*2+datum.value.q3 || datum['My_Y_Value']<=datum.value.q1-(datum.value.q3-datum.value.q1)*2"
+                            }
+                          ]
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "symbol",
+                          "name": "outlier_obs",
+                          "interactive": true,
+                          "from": {"data": "MyOutliers_"},
+                          "encode": {
+                            "update": {
+                              "size": {"signal": "Feature_Size"},
+                              "xc": {"signal": "violin_width / 2"},
+                              "y": {
+                                "scale": "y_cont_scale",
+                                "field": "My_Y_Value"
+                              },
+                              "fill": {"value": "firebrick"},
+                              "tooltip": {
+                                "signal": "{'Group':format(datum['My_X_Value'],'0.2f'),'Value':format(datum['My_Y_Value'],'0.2f')}"
+                              },
+                              "opacity": [
+                                {"test": "Outliers_", "value": 0.5},
+                                {"value": 0}
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "interactive": true,
+      "from": {"data": "graph_grids"},
+      "marks": [
+        {
+          "type": "group",
+          "interactive": true,
+          "name": "grid_graphs",
+          "encode": {
+            "update": {
+              "height": {
+                "signal": "height-Title_Height-Xaxis_Height-Legend_Height"
+              },
+              "x": {"signal": "margin_hz"},
+              "width": {"signal": "width-margin_hz*2"},
+              "y": {"signal": "Title_Height"}
+            }
+          },
+          "data": [
+            {
+              "name": "row_instance",
+              "source": "rows_domain",
+              "transform": [{"type": "filter", "expr": "show_grid_graphs"}]
+            },
+            {
+              "name": "col_instance",
+              "source": "cols_domain",
+              "transform": [{"type": "filter", "expr": "show_grid_graphs"}]
+            },
+            {
+              "name": "grid_data",
+              "source": "tdata",
+              "transform": [
+                {"type": "filter", "expr": "!fail"},
+                {"type": "filter", "expr": "show_grid_graphs"}
+              ]
+            }
+          ],
+          "scales": [
+            {
+              "name": "p_xscale",
+              "type": "band",
+              "domain": {
+                "data": "grid_data",
+                "field": "My_X_Value",
+                "sort": true
+              },
+              "range": [0, {"signal": "Plot_Width"}]
+            },
+            {
+              "name": "p_yscale",
+              "type": "band",
+              "domain": {
+                "data": "grid_data",
+                "field": "My_Y_Value",
+                "sort": true
+              },
+              "range": [0, {"signal": "Plot_Height"}]
+            },
+            {
+              "name": "size_scale",
+              "type": "pow",
+              "exponent": 2,
+              "domain": {"data": "grid_data", "field": "My_S_Value"},
+              "range": [
+                0,
+                {
+                  "signal": "min(bandwidth('p_xscale')*0.95,bandwidth('p_yscale')*0.95)"
+                }
+              ]
+            }
+          ],
+          "marks": [
+            {
+              "name": "row_header",
+              "type": "group",
+              "from": {"data": "row_instance"},
+              "encode": {
+                "update": {
+                  "height": {"signal": "Plot_Height"},
+                  "width": {"signal": "0"},
+                  "y": {"field": "data", "scale": "row_scale"},
+                  "x": {"signal": "RowTitle_Width-5"}
+                }
+              },
+              "title": {
+                "text": {"signal": "if(Facet_Rows_By=='None',Y_Axis,'')"},
+                "orient": "left"
+              },
+              "axes": [
+                {
+                  "scale": "p_yscale",
+                  "gridScale": "p_xscale",
+                  "domain": true,
+                  "title": "title",
+                  "offset": {"signal": "-0"},
+                  "encode": {
+                    "title": {
+                      "update": {
+                        "text": {
+                          "signal": "if(parent.data=='None','',parent.data)"
+                        },
+                        "align": {"value": "left"}
+                      }
+                    },
+                    "grid": {
+                      "update": {"strokeOpacity": {"signal": "if(Grids_,1,0)"}}
+                    }
+                  },
+                  "orient": "left",
+                  "labels": true
+                }
+              ]
+            },
+            {
+              "name": "col_footer",
+              "type": "group",
+              "from": {"data": "col_instance"},
+              "encode": {
+                "update": {
+                  "width": {"signal": "Plot_Width"},
+                  "height": {"signal": "Xaxis_Height"},
+                  "x": {"signal": "datum.data", "scale": "col_scale"},
+                  "y": {
+                    "signal": "row_ht*rows_count-Plot_Padding+4+PlotTitle_Height"
+                  }
+                }
+              },
+              "axes": [
+                {
+                  "scale": "p_xscale",
+                  "gridScale": "p_yscale",
+                  "domain": true,
+                  "zindex": 0,
+                  "title": "title",
+                  "labelAngle": -90,
+                  "labelBaseline": "bottom",
+                  "labelAlign": "right",
+                  "labelLimit": {"signal": "Xaxis_Height-20"},
+                  "offset": {"signal": "-Xaxis_Height"},
+                  "encode": {
+                    "grid": {
+                      "update": {"strokeOpacity": {"signal": "if(Grids_,1,0)"}}
+                    },
+                    "title": {
+                      "update": {
+                        "text": {
+                          "signal": "if(parent.data=='None','',parent.data)"
+                        },
+                        "align": {"value": "center"}
+                      }
+                    }
+                  },
+                  "orient": "bottom",
+                  "labels": true
+                }
+              ]
+            },
+            {
+              "name": "grid_chart",
+              "type": "group",
+              "from": {
+                "facet": {
+                  "data": "grid_data",
+                  "name": "plategrid",
+                  "groupby": ["My_M_Value", "My_M2_Value"]
+                }
+              },
+              "marks": [
+                {
+                  "name": "grid_chart",
+                  "type": "group",
+                  "axes": [
+                    {
+                      "scale": "p_yscale",
+                      "domain": false,
+                      "encode": {
+                        "grid": {
+                          "update": {
+                            "strokeOpacity": {"signal": "if(Grids_,1,0)"}
+                          }
+                        }
+                      },
+                      "gridScale": "p_xscale",
+                      "orient": "left",
+                      "labels": false,
+                      "ticks": false
+                    },
+                    {
+                      "scale": "p_xscale",
+                      "gridScale": "p_yscale",
+                      "domain": false,
+                      "encode": {
+                        "grid": {
+                          "update": {
+                            "strokeOpacity": {"signal": "if(Grids_,1,0)"}
+                          }
+                        }
+                      },
+                      "orient": "bottom",
+                      "labels": false,
+                      "ticks": false
+                    }
+                  ],
+                  "encode": {
+                    "update": {
+                      "width": {"signal": "Plot_Width"},
+                      "x": {
+                        "signal": "parent.My_M_Value",
+                        "scale": "col_scale"
+                      },
+                      "y": {
+                        "signal": "parent.My_M2_Value",
+                        "scale": "row_scale"
+                      },
+                      "height": {"signal": "Plot_Height"},
+                      "stroke": {"value": "#ccc"},
+                      "strokeWidth": {"value": 0.5}
+                    }
+                  },
+                  "scales": [],
+                  "marks": [
+                    {
+                      "type": "rect",
+                      "from": {"data": "plategrid"},
+                      "encode": {
+                        "update": {
+                          "x": {"scale": "p_xscale", "field": "My_X_Value"},
+                          "y": {"scale": "p_yscale", "field": "My_Y_Value"},
+                          "width": {
+                            "scale": "size_scale",
+                            "field": "My_S_Value"
+                          },
+                          "height": {
+                            "scale": "size_scale",
+                            "field": "My_S_Value"
+                          },
+                          "tooltip": {"signal": "datum"},
+                          "cornerRadius": {"value": 20},
+                          "opacity": [{"signal": "Opacity_"}],
+                          "fill": [
+                            {
+                              "test": "Cord",
+                              "scale": "color_scale_cat",
+                              "field": "My_C_Value"
+                            },
+                            {"scale": "color_scale_cont", "field": "My_C_Value"}
+                          ],
+                          "stroke": [
+                            {
+                              "test": "Cord",
+                              "scale": "color_scale_cat",
+                              "field": "My_C_Value"
+                            },
+                            {"scale": "color_scale_cont", "field": "My_C_Value"}
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "chart_footer",
+      "encode": {
+        "update": {
+          "y": {"signal": "height-Legend_Height"},
+          "height": {"signal": "Legend_Height"},
+          "width": {"signal": "width-margin_hz*2"},
+          "x": {"signal": "margin_hz"}
+        }
+      },
+      "legends": [
+        {
+          "fill": "color_scale_cont",
+          "type": "gradient",
+          "gradientLength": {
+            "signal": "if(!Cord&!show_box_graphs,Legend_Height*.5,0)"
+          },
+          "strokeColor": {
+            "signal": "if(!Cord&!show_box_graphs,'#ccc','transparent')"
+          },
+          "gradientThickness": {"signal": "if(!Cord&!show_box_graphs,24,0)"},
+          "labelLimit": {
+            "signal": "if(Color_By!='None'&!show_box_graphs,26,0)"
+          },
+          "orient": {"signal": "'bottom-left'"},
+          "title": {
+            "signal": "if((Show_Titles&!Cord)&!show_box_graphs,'Color By '+Color_By,'')"
+          },
+          "labelOpacity": {"signal": "if(!Cord&!show_box_graphs,1,0)"},
+          "titleOrient": "top"
+        },
+        {
+          "fill": "color_scale_cat",
+          "orient": {"signal": "'bottom'"},
+          "columns": 5,
+          "values": {"signal": "!Cord ? [] : 0"},
+          "title": {
+            "signal": "if(Show_Titles & !(Color_By=='None'||show_box_graphs),'Color ~ '+Color_By,'')"
+          },
+          "strokeColor": {
+            "signal": "if(Color_By=='None'||show_box_graphs,'transparent','#ccc')"
+          },
+          "encode": {
+            "symbols": {
+              "interactive": true,
+              "update": {
+                "opacity": [
+                  {"test": "Color_By=='None'||show_box_graphs", "value": 0},
+                  {"value": 1}
+                ]
+              }
+            },
+            "labels": {
+              "name": "filterLegendlab",
+              "interactive": true,
+              "update": {
+                "opacity": [
+                  {"test": "Color_By=='None'||show_box_graphs", "value": 0},
+                  {"value": 0.75}
+                ]
+              }
+            }
+          }
+        },
+        {
+          "stroke": "filter_scale",
+          "title": {
+            "signal": "if(Show_Titles & Filter_Out_From!='None','Filter (Click To Toggle)','')"
+          },
+          "strokeColor": {
+            "signal": "if(Filter_Out_From=='None','transparent','firebrick')"
+          },
+          "columns": 5,
+          "values": {"signal": "Filter_Out_From=='None' ? [] : 0"},
+          "encode": {
+            "symbols": {
+              "name": "filterLegend",
+              "interactive": true,
+              "update": {
+                "strokeWidth": {"value": 0},
+                "opacity": [
+                  {"test": "Filter_Out_From=='None'", "value": 0.5},
+                  {
+                    "test": "indata('selectedFilter', 'value', datum.value)",
+                    "value": 0.15
+                  },
+                  {"value": 0.75}
+                ],
+                "fill": [
+                  {"test": "Filter_Additional=='None'", "value": "transparent"},
+                  {
+                    "test": "indata('selectedFilter', 'value', datum.value)",
+                    "signal": "'yelllow'"
+                  },
+                  {"signal": "datum.value", "scale": "filter_scale2"}
+                ],
+                "size": {"value": 64}
+              }
+            },
+            "labels": {
+              "name": "filterLegendlab",
+              "values": {"signal": "Filter_Out_From=='None' ? [] : 0"},
+              "interactive": true,
+              "update": {
+                "opacity": [
+                  {"test": "Filter_Out_From=='None'", "value": 0.5},
+                  {
+                    "test": "indata('selectedFilter', 'value', datum.value)",
+                    "value": 0.15
+                  },
+                  {"value": 0.75}
+                ]
+              }
+            },
+            "title": {
+              "update": {
+                "opacity": [
+                  {"test": "Show_Titles&Filter_Out_From=='None'", "value": 0.5},
+                  {"value": 1}
+                ]
+              }
+            }
+          },
+          "orient": "bottom"
+        },
+        {
+          "fill": "filter_scale2",
+          "title": {
+            "signal": "if(Show_Titles & Filter_Additional!='None','Filter (Click To Toggle)','')"
+          },
+          "strokeColor": {
+            "signal": "if(Filter_Additional=='None','transparent','firebrick')"
+          },
+          "cornerRadius": {"value": 4},
+          "padding": {"value": 3},
+          "columns": 5,
+          "values": {"signal": "Filter_Additional=='None' ? [] : 0"},
+          "encode": {
+            "symbols": {
+              "name": "filterLegend",
+              "interactive": true,
+              "update": {
+                "strokeWidth": {"value": 1},
+                "opacity": [
+                  {"test": "Filter_Additional=='None'", "value": 1},
+                  {
+                    "test": "indata('selectedFilter2', 'value', datum.value)",
+                    "value": 0.15
+                  },
+                  {"value": 0.75}
+                ],
+                "size": {"value": 64},
+                "fill": [
+                  {"test": "Filter_Additional=='None'", "value": "transparent"},
+                  {
+                    "test": "indata('selectedFilter2', 'value', datum.value)",
+                    "signal": "'yelllow'"
+                  },
+                  {"signal": "datum.value", "scale": "filter_scale2"}
+                ]
+              }
+            },
+            "labels": {
+              "name": "filterLegendlab",
+              "values": {"signal": "Filter_Additional=='None' ? [] : 0"},
+              "interactive": true,
+              "update": {
+                "opacity": [
+                  {"test": "Filter_Additional=='None'", "value": 0.5},
+                  {
+                    "test": "indata('selectedFilter2', 'value', datum.value)",
+                    "value": 0.15
+                  },
+                  {"value": 0.75}
+                ]
+              }
+            },
+            "title": {
+              "update": {
+                "opacity": [
+                  {"test": "Show_Titles&Filter_Additional=='None'", "value": 1},
+                  {"value": 1}
+                ]
+              }
+            }
+          },
+          "orient": "bottom"
+        }
+      ]
+    }
+  ]
+}

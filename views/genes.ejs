@@ -1,0 +1,76 @@
+<div class="itg itg-container" id="itg-box-info">
+	<div class="itg itg-row" id="firstcol">
+		<div class="itg itg-half itg-column">
+			<h1 class="itg" id="gene_name" style="font-size:300%;"></h1><!-- General Info–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+			<table class="itg itg-simple-table" id="gene_info">
+				<thead class="itg itg-title-row">
+					<tr>
+						<th class="itg itg-title-row" colspan="2">General Info</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="itg itg-tr">
+						<td class="itg collight">Gene name (HGNC)</td>
+						<td class="itg coldark" id="gene_name3"></td>
+					</tr>
+					<tr class="itg itg-tr">
+						<td class="itg collight">Gene Long Name</td>
+						<td class="itg coldark" id="Gene_full_name"></td>
+					</tr>
+					<tr class="itg itg-tr">
+						<td class="itg collight">Ensemble Name</td>
+						<td class="itg coldark">
+							<a class="itg" id="Ensembl_gene_ref"></a>
+							<div class="itg" id="Ensembl_gene" style="display:inline-block;"></div>
+						</td>
+					</tr>
+					<tr class="itg itg-tr">
+						<td class="itg collight">Other Gene Symbols</td>
+						<td class="itg coldark" id="Gene_other_names"></td>
+					</tr>
+					<tr class="itg itg-tr">
+						<td class="itg collight">GChr38 Position</td>
+						<td class="itg coldark" id="chr"></td>
+					</tr>
+					<tr class="itg itg-tr">
+						<td class="itg collight">Transcripts</td>
+						<td class="itg coldark" id="transcript_list" style="font-size:10px;line-height: 1.4em;"></td>
+					</tr>
+					<tr class="itg itg-tr">
+						<td class="itg collight">Uniprot</td>
+						<td class="itg coldark">
+							<a class="itg" id="Uniprot_ref">
+							<div class="itg" style="display:inline-block;"></div></a>
+						</td>
+					</tr>
+					<tr class="itg itg-tr">
+						<td class="itg collight">Entrez Gene</td>
+						<td class="itg coldark">
+							<a class="itg" id="Entrez_gene_ref">
+							<div class="itg" id="Entrez_gene" style="display:inline-block;"></div></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="itg itg-half itg-column" id="itg-wordcloud-parent" style="width:50%;max-width:600px;">
+			<div class="itg" id="gene_wordcloud"></div>
+		</div>
+	</div>
+</div>
+<div class="itg" id="GeneLookup"></div>
+<div class="itg" id="diseasemark" style="display:none"></div>
+
+
+
+<div class="accd jsa">
+	<div class="accd_item jsa-item active" id="rna_expression">
+		<div class="accd-header jsa-header">
+			<h3 class="itg">RNA Expression</h3>
+		</div>
+		<div class="accd-body jsa-body itg-container">
+			<div class="itg itg-graph" id="expgraff"></div>
+		</div>
+	</div>
+</div>
+

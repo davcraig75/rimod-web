@@ -1,0 +1,717 @@
+/* Main –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+#rimod-ftd {
+	margin: 0 auto;
+	position: relative;
+	vertical-align: top;
+	width: 100%;
+	height: 100%;
+	padding: 0px 0px 0px 0px;
+	font-style: normal;
+	font-variant-ligatures: normal;
+	font-variant-caps: normal;
+	font-variant-numeric: normal;
+	font-variant-east-asian: normal;
+	font-weight: normal;
+	font-stretch: normal;
+	font-size: 14px;
+	line-height: 1.4em;
+	font-family: "Open Sans", Verdana, Arial, sans-serif;
+	color: #1c1f2a;
+}
+/* Menu –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.itg-grid-wide {
+	display: table-cell;
+	width: 100%;
+}
+.itgButtonimg {
+	margin: 0 auto;
+	height: 80px;
+}
+.itgButton {
+	box-shadow: inset 1px 2px 1px 3px #dbdbdb;
+	/* background: linear-gradient(to bottom, #f3eee8 5%, #f3eee8 100%); */
+	/* background-color: #FFFFF7; */
+	border-radius: 6px;
+	display: inline-block;
+	cursor: pointer;
+	width: 250px;
+	height: 180px;
+	padding: 12px 12px;
+}
+.itgButton:hover {
+	box-shadow: inset 1px 2px 1px 3px #bb2121;
+}
+.itgButton:active {
+	position: relative;
+	top: 1px;
+}
+em.itg {
+	color: #bb2121;
+	font-style: unset;
+	font-weight: bold;
+}
+.itg-nav {
+	display: inline;
+	list-style: none;
+	width: 100%;
+}
+.itg-nav ul {
+	padding: 1em;
+	background: #e6ebef;
+	color: #e6ebef;
+	padding: 0;
+	width: 100%;
+	list-style: none;
+	margin-block-start: 0em;
+	margin-block-end: 0em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 0px;
+}
+.itg-nav ul li {
+	float: left;
+	cursor: pointer;
+	width: 250px;
+	line-height: 60px;
+	text-align: center;
+}
+.itg-nav-button {
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	cursor: pointer;
+	display: block;
+	color: #001763;
+	display: block;
+	font-weight: bold;
+	margin: 0 1px 0 0;
+	padding: 0 0.5em;
+}
+.itg-nav-button>p {
+	vertical-align: middle;
+}
+.itg-nav-button.active {
+	background: white;
+	color: #28abe2;
+}
+.itg-nav-button:hover {
+	background: white;
+	color: #bb2121;
+	text-decoration: underline;
+}
+.itg-search-button {
+	float: left;
+	background: white;
+	color: #bb2121;
+	border: white;
+	border-bottom: #a4a4a4 1px;
+	cursor: pointer;
+}
+#gene_search_div {
+	height: 1.4em;
+	cursor: pointer;
+}
+input#gene {
+	border: 1px solid #ccc;
+	background: #f6f6f6;
+	font-weight: normal;
+	color: #a4a4a4;
+	border-radius: 3px;
+	font-size: 12px;
+	padding: 4.8px 12px 4.8px 12px;
+	margin: 0px 2px;
+	line-height: 1.4;
+	cursor: text;
+}
+hr {
+	margin-top: 1em;
+	width: 75%;
+	margin-bottom: 1.5rem;
+	border-width: 0;
+	border-top: 1px solid #E1E1E1;
+}
+/* Containers –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.itg-column, .itg-columns {
+	width: 100%;
+	float: left;
+	box-sizing: border-box;
+}
+.itg-main-container {
+	max-width: 1200px;
+	width: 80%;
+	margin: 0 auto;
+}
+.itg-three.itg-columns {
+	width: 100%;
+    margin-block-start: 0em;
+    margin-block-end: 0.5em;
+}
+@media (max-width: 650px) {
+	.container {
+		width: 85%;
+		padding: 0;
+	}
+}
+.itg-main-container {
+	max-width: 1200px;
+	width: 100%;
+}
+.itg-half.itg-column {
+	width: 100%;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+@media (min-width: 651px) {
+	.itg-main-container {
+		max-width: 1200px;
+		width: 80%;
+	}
+	.itg-half.itg-column {
+		width: 48%;
+		margin-block-start: 1em;
+		margin-block-end: 1em;
+		margin-inline-start: 0px;
+		margin-inline-end: 0px;
+	}
+	.itg-column, .itg-columns {
+		margin-left: 0;
+	}
+	.itg-column:first-child, .itg-columns:first-child {
+		margin-left: 0;
+	}
+	.itg-one.itg-column, .itg-one.itg-columns {
+		width: 4.66666666667%;
+	}
+	.itg-two.itg-columns {
+		width: 13.3333333333%;
+	}
+	.itg-three.itg-columns {
+		width: 45%;
+	}
+	.itg-four.itg-columns {
+		width: 30.6666666667%;
+	}
+	.itg-five.itg-columns {
+		width: 39.3333333333%;
+	}
+	.itg-six.itg-columns {
+		width: 48%;
+	}
+	.itg-seven.itg-columns {
+		width: 56.6666666667%;
+	}
+	.itg-eight.itg-columns {
+		width: 65.3333333333%;
+		margin: auto;
+	}
+	.itg-nine.itg-columns {
+		width: 74.0%;
+	}
+	.itg-ten.itg-columns {
+		width: 82.6666666667%;
+	}
+	.itg-eleven.itg-columns {
+		width: 91.3333333333%;
+	}
+	.itg-twelve.itg-columns {
+		width: 100%;
+		margin-left: 0;
+	}
+	.one-third.itg-column {
+		width: 37.6666666667%;
+	}
+	.two-thirds.itg-column {
+		width: 60.3333333333%;
+	}
+	.one-half.itg-column {
+		width: 48%;
+	}
+	/* Offsets */
+	.offset-by-one.column, .offset-by-one.columns {
+		margin-left: 8.66666666667%;
+	}
+	.offset-by-two.column, .offset-by-two.columns {
+		margin-left: 17.3333333333%;
+	}
+	.offset-by-three.column, .offset-by-three.columns {
+		margin-left: 26%;
+	}
+	.offset-by-four.column, .offset-by-four.columns {
+		margin-left: 34.6666666667%;
+	}
+	.offset-by-five.column, .offset-by-five.columns {
+		margin-left: 43.3333333333%;
+	}
+	.offset-by-six.column, .offset-by-six.columns {
+		margin-left: 52%;
+	}
+	.offset-by-seven.column, .offset-by-seven.columns {
+		margin-left: 60.6666666667%;
+	}
+	.offset-by-eight.column, .offset-by-eight.columns {
+		margin-left: 69.3333333333%;
+	}
+	.offset-by-nine.column, .offset-by-nine.columns {
+		margin-left: 78.0%;
+	}
+	.offset-by-ten.column, .offset-by-ten.columns {
+		margin-left: 86.6666666667%;
+	}
+	.offset-by-eleven.column, .offset-by-eleven.columns {
+		margin-left: 95.3333333333%;
+	}
+	.offset-by-one-third.column, .offset-by-one-third.columns {
+		margin-left: 34.6666666667%;
+	}
+	.offset-by-two-thirds.column, .offset-by-two-thirds.columns {
+		margin-left: 69.3333333333%;
+	}
+	.offset-by-one-half.column, .offset-by-one-half.columns {
+		margin-left: 52%;
+	}
+}
+
+/* Lists
+	  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.itg-page {
+	opacity: 0;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-block-end: 1em;
+	max-width: 2000px;
+	margin: 0 auto;
+}
+.itg-container {
+	position: relative;
+	vertical-align: top;
+	box-sizing: border-box;
+	display: table;
+	margin: 0 auto;
+	width: 100%;
+}
+.itg-container:after, .itg-row:after, .itg-box:after, .itg-page:after, .u-cf {
+	content: '';
+	display: table;
+	clear: both;
+}
+.itg-inlay {
+	display: inline-block;
+	color: #333;
+	border: 0.5em solid #00000008;
+	border-radius: 0.5em;
+	padding: 0.5em;
+	border-radius: 0.5em;
+	opacity: 1.0;
+}
+
+.itg-box {
+	box-sizing: border-box;
+	padding: 0 0px;
+	margin: 0 auto;
+	width: 100%;
+	margin-bottom: 1em;
+	box-sizing: border-box;
+	border: 0.5px solid #ccc;
+	padding: 4px 10px;
+	border-radius: 3px;
+	margin: 0 auto;
+	width: 100%;
+	margin-bottom: 1em;
+	background: white;
+	box-shadow: 1px 1px 1px #333;
+}
+.itg-row {
+	box-sizing: border-box;
+	padding: 0 0px;
+	margin: 0 auto;
+	margin-bottom: 1em;
+	box-sizing: border-box;
+	padding: 4px 10px;
+	margin: 0 auto;
+	width: 96%;
+	margin-bottom: 1em;
+	background: white;
+}
+.itg-row.box {
+	background: #f4f4f4;
+	border: 0.5px solid #ccc;
+	box-shadow: 1px 1px 1px #333;
+}
+/* Lists –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+ul.itg {
+	list-style: circle inside;
+}
+ol.itg {
+	list-style: decimal inside;
+}
+ol.itg, ul.itg {
+	padding-left: 0;
+	margin-top: 0;
+}
+ul.itg ul.itg, ul.itg ol.itg, ol.itg ol.itg, ol.itg ul.itg {
+	margin: 1.5rem 0 1.5rem 3rem;
+	font-size: 90%;
+}
+li.itg {
+	margin-bottom: 1em;
+}
+ol.itg-ol {
+	list-style: decimal inside;
+}
+ul.itg-ul ul.itg-ul, ul.itg-ul ol.itg-ol, ol.itg-ol ol.itg-ol, ol.itg-ol ul.itg-ul {
+	margin: 0.8em 0em 0.8em 1.5em;
+}
+.itg-svg-container {
+	position: relative;
+	padding: 0;
+}
+.u-full-width {
+	width: 100%;
+	box-sizing: border-box;
+}
+/* Make sure elements don't run outside containers (great for images in columns) */
+
+.u-max-full-width {
+	max-width: 100%;
+	box-sizing: border-box;
+}
+.u-pull-right {
+	float: right;
+}
+.u-pull-left {
+	float: left;
+}
+.u-cf {
+	content: "";
+	display: table;
+	clear: both;
+}
+/* H2345 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+h1.itg {
+	font-size: 2.6em;
+	line-height: 2em;
+	font-family: "Open Sans", Verdana, Arial, sans-serif;
+	font-weight: 300;
+	color: #1c1f2a;
+	margin-block-start: 0.5em;
+	margin-block-end: 0.5em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+h2.itg {
+	font-size: 1.4em;
+	text-align: center;
+	font-family: Open Sans, Verdana, Arial, sans-serif;
+	font-weight: 600;
+	color: #1c1f2a;
+	padding-left: 15px;
+	line-height: 2.4em;
+	border-bottom: 1px #333 solid;
+	margin-block-start: 0.5em;
+	margin-block-end: 0.5em;
+	margin-inline-start: 1em;
+	margin-inline-end: 1em;
+}
+h3.itg {
+	font-size: 0.9em;
+	line-height: 1.8em;
+	text-transform: capitalize;
+	font-weight: bold;
+	font-family: Arial, Verdana, sans-serif;
+}
+h4.itg {
+	font-size: 1.4em;
+	line-height: 1.6em;
+	font-family: 'Open Sans';
+	text-align: center;
+	font-weight: 300;
+	color: #1c1f2a;
+	letter-spacing: 0;
+	margin-block-start: 0em;
+	margin-block-end: 0em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+h5.itg {
+	font-size: 1.2em;
+	line-height: 1.2em;
+	font-family: "Open Sans", Verdana, Arial, sans-serif;
+	font-weight: 300;
+	color: #1c1f2a;
+	letter-spacing: 0;
+	margin-block-start: 0.1em;
+	margin-block-end: 0.2em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+h6.itg {
+	font-size: 0.75em;
+	line-height: 1.4em;
+	font-family: "Open Sans", Verdana, Arial, sans-serif;
+	font-weight: bold;
+	color: #1c1f2a;
+	letter-spacing: 0;
+	margin-block-start: 0em;
+	margin-block-end: 0.2em;
+	margin-inline-start: 1em;
+	margin-inline-end: 0px;
+}
+p.itg, label.itg, ul.itg {
+	font-size: 0.9em;
+	margin-bottom: 0.9em;
+	text-align: justify;
+	padding: 0px 0.5em 0px 0.5em;
+	margin-top: 1em;
+	display: block;
+}
+a.itg-expand {
+	color: #ad1300;
+	text-decoration: none;
+}
+/* ITG Button –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+a.itg-button, button.itg-button {
+	border-radius: 0.5em;
+	font-size: 1em;
+	font-weight: bold;
+	background: #C7C7C7;
+	color: #FFF;
+	padding: 2px 1em 2px 1em;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+button.itg-button:hover {
+	background: #28abe2;
+	cursor: pointer;
+}
+button.itg-button active {
+	background: #28abe2;
+	color: #FFF;
+	cursor: pointer;
+}
+/* Table Builder –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+table.itg-table-explorer {
+	text-align: center;
+	display: table;
+	border-collapse: separate;
+	width: 100%;
+	margin: 10px 10px 10px 10px;
+	padding: 10px;
+	margin: 0 auto;
+	min-height: 210px;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+table.itg-table-explorer tbody tr td {
+	margin: auto;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+table.itg, .pvtUi {
+	color: #333;
+	margin: 0 auto;
+}
+table.itg {
+	border: solid 1px #1f2446;
+	border-top: solid 1px #1f2446;
+	border-left: solid 1px #1f2446;
+	border-bottom: solid 1px #1f2446;
+	border-right: solid 1px #1f2446;
+	margin-bottom: 1em;
+	padding-left: 0.5em;
+	text-align: center;
+	border-collapse: collapse;
+}
+table.itg thead tr th, table.itg tbody tr th {
+	text-align: center;
+	border-bottom: transparent;
+	border-collapse: collapse;
+}
+table.itg td, table.itg th {
+	border: transparent;
+	text-align: center;
+	padding: 0.25em 0.5em 0.25em 0.5em;
+}
+th {
+	padding: 0.25em 0.5em 0.25em 0.5em;
+}
+table.itg th:nth-child(1) {
+	text-align: center;
+}
+table.itg td:nth-child(1) {
+	text-align: center;
+	border-bottom: transparent;
+	border-right: transparent;
+	background-color: transparent;
+}
+table.itg tr:nth-of-type(2n + 2) {
+	background-color: transparent;
+}
+table.itg tr:nth-of-type(2n + 3) {
+	background-color: #FBFDFF;
+}
+table.itg .pvtColLabel {
+	text-align: center;
+}
+table.itg .pvtTotalLabel {
+	text-align: center;
+}
+table.itg tbody tr td {
+	display: table-cell;
+	vertical-align: inherit;
+	border: transparent;
+	;
+}
+/* DNA –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+#dna {
+	position: absolute;
+	top: 50%;
+	height: 240px;
+	left: 50%;
+	width: 800px;
+	margin-top: -120px;
+	margin-left: -400px;
+	perspective: 1000px;
+  }
+  
+  #dna div{
+	position: relative;
+	top: 50%;
+	left: 60px;
+	width: 2px;
+	height: 160px;
+	margin-top: -80px;
+	background-color: @rgba(255,255,255,0.1);
+	float: left;
+	transform-style: preserve-3d;
+	margin-left: 20px;
+	animation: rotation @4s linear infinite;
+  }
+  
+  #dna div::before {
+	content: "";
+	position: absolute;
+	top: -10px;
+	left: -4px;
+	right: -4px;
+	height: 10px;
+	background-color: @blue;
+	border-radius: 5px;
+	animation: rotation @4s linear infinite reverse;
+	z-index: 1;
+  }
+  
+  #dna div::after {
+	content: "";
+	position: absolute;
+	bottom: -10px;
+	left: -4px;
+	right: -4px;
+	height: 10px;
+	background-color: @blue;
+	border-radius: 5px;
+	animation: rotation @4s linear infinite reverse;
+	z-index: 1;
+  }
+  
+  @iterations: 30;
+  .loop (@i) when (@i > 0) {
+	@delay: (@i * @0.15 - 60);
+	#dna div:nth-child(@{i}){
+	  animation-delay: ~"@{delay}s";
+	}
+	#dna div:nth-child(@{i})::before{
+	  animation-delay: ~"@{delay}s";
+	}
+	#dna div:nth-child(@{i})::after{
+	  animation-delay: ~"@{delay}s";
+	}
+	.loop(@i - 1);
+  }
+  .loop(@iterations);
+  
+  @-webkit-keyframes rotation {
+		  from {
+				  transform: rotateX(0deg);
+		  }
+		  to {
+				  transform: rotateX(359deg);
+		  }
+  }
+
+/* Accordion –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+	.accd-body {
+		height: auto;
+		display: none;
+		height: auto;
+		margin-top: 0px;
+		margin-left: 0.5em;
+		margin-right: 6em;
+		margin-bottom: 0.5em;
+		background: #fff;
+		max-width: 1600px;
+	}
+	.accd {
+		margin-block-start: 1em;
+		margin-block-end: 1em;
+	}
+	.accd-header {
+		cursor: pointer;
+	}
+	.accd-header>h3 {
+		background: #d8d5d5;
+		color: #555;
+		padding: 2px 2px 2px 10px;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		margin-block-start: 0em;
+		margin-block-end: 0em;
+		margin-inline-start: 0px;
+		margin-inline-end: 0px;
+	}
+	.accd-header:hover>h3 {
+		color: #fff;
+		background: #bb2121;
+		animate: 0.2s;
+	}
+	.accd_item.jsa-item.active>.accd-header>h3 {
+		padding-left: 5px;
+		color: #fff;
+		background: #00599c;
+	}
+	.accd_item>.accd-header>h3:before {
+		float: left;
+		content: '-';
+		padding-right: 4px;
+		font-size: 1.2em;
+		font-style: bold;
+		position: relative;
+		top: 0px;
+	}
+	.accd_item.jsa-item.active>.accd-header>h3:before {
+		content: '+';
+	}	
+	.accd-body.jsa-body {
+		padding: 0.5em;
+		padding-top: 1em;
+		padding-bottom: 1em;
+		margin-block-end: 0em;
+		margin-inline-start: 0px;
+		margin-inline-end: 0px;
+		border: 0.5px solid #ccc;
+		background: #f4f4f4;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+	}
